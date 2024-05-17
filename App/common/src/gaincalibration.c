@@ -8,9 +8,11 @@
 #include <stdio.h>
 #include "gaincalibration.h"
 #include "banyan.h"
-#include "banyan_para.c"
 #include "platform.h"
 #include "system.h"
+#include "banyan_para.c"
+// or InitRegList_ABD?
+#define InitRegList InitRegList_MTT
 
 int16_t RawValueMax[CHANNEL_MAX];
 int16_t RawValueMin[CHANNEL_MAX];
@@ -183,7 +185,8 @@ void StartGainCalibration(void)
         I2C_Write(I2C_ADDR_BanYan_Chip0, (uint8_t)(regList[loop].addr), regList[loop].val);
         loop++;
     }
-	System_Reconfig();
+	// TODO: figure out what this does
+	System_Reconfig(0xff);
 	
 	gainCalibration = 1;
 	GainCalibrationState = GAIN_CALIBRATION_STATE_IVCM;

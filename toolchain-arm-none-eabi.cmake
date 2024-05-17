@@ -74,7 +74,7 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-set(CPU_TYPE "cortex-m0plus")
+set(CPU_TYPE "cortex-m4")
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # cmake-format: off
@@ -97,14 +97,16 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 #
 # cmake-format: on
 set(OBJECT_GEN_FLAGS
-        "-mthumb \
+    "-mthumb \
     -fno-builtin \
     -Wall \
     -Wimplicit-fallthrough\
     -ffunction-sections \
     -fdata-sections \
     -fomit-frame-pointer \
-    -mabi=aapcs\
+    -mabi=aapcs \
+    -mfloat-abi=hard \
+    -mfpu=fpv4-sp-d16 \
     -mtune=${CPU_TYPE} \
     -mcpu=${CPU_TYPE}")
 

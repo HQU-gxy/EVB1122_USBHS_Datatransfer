@@ -6,15 +6,15 @@
   ******************************************************************************
   */
 #include <stdio.h>
-#include "I2CStressTest.h"
-#include "global_conf.h"
-#include "utilities.h"
-#include "cmdprocess.h"
-#include "platform.h"
-#include "banyan.h"
+#include "../inc/I2CStressTest.h"
+#include "../../../Config/global_conf.h"
+#include "../../../Config/utilities.h"
+#include "../inc/cmdprocess.h"
+#include "../../../Middleware/common/inc/platform.h"
+#include "../../../Middleware/common/inc/banyan.h"
 #ifdef STM32_PLATFORM
-#include "cmsis_os.h"
-#include "rtos.h"
+#include "../../../Middleware/freertos/CMSIS_RTOS/cmsis_os.h"
+#include "../inc/rtos.h"
 #endif
 
 #ifdef STM32_PLATFORM
@@ -25,10 +25,10 @@ static I2CTEST_RESULT_T testResult = {0};
 static uint8_t forceStop = 0;
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTest_Send2I2CTestDataQueue
- @¹¦ÄÜ£º·¢ËÍI2CÊý¾ÝÖÁÊý¾Ý¶ÓÁÐ
- @²ÎÊý£ºI2CData£¬Êý¾ÝÖ¸Õë
- @·µ»Ø£ºnone
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTest_Send2I2CTestDataQueue
+ @ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½I2Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½I2CDataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+ @ï¿½ï¿½ï¿½Ø£ï¿½none
 *************************************************************************/
 void I2CStressTest_Send2I2CTestDataQueue(void *I2CData)
 {
@@ -41,11 +41,11 @@ void I2CStressTest_Send2I2CTestDataQueue(void *I2CData)
 }
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTest_Process
- @¹¦ÄÜ£ºI2CÑ¹²âº¯Êý
- @²ÎÊý£ºbuf£¬Êý¾ÝÖ¸Õë
-        len£¬Êý¾Ý³¤¶È
- @·µ»Ø£ºnone
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTest_Process
+ @ï¿½ï¿½ï¿½Ü£ï¿½I2CÑ¹ï¿½âº¯ï¿½ï¿½
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bufï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+        lenï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½
+ @ï¿½ï¿½ï¿½Ø£ï¿½none
 *************************************************************************/
 void I2CStressTest_Process(uint8_t* buf, uint16_t len)
 {
@@ -133,10 +133,10 @@ void I2CStressTest_Process(uint8_t* buf, uint16_t len)
 }
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTest_IsStressTestProcessRunning
- @¹¦ÄÜ£º·µ»ØI2CÊÇ·ñÔËÐÐ
- @²ÎÊý£ºnone
- @·µ»Ø£ºnone
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTest_IsStressTestProcessRunning
+ @ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½I2Cï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½none
+ @ï¿½ï¿½ï¿½Ø£ï¿½none
 *************************************************************************/
 uint8_t I2CStressTest_IsStressTestProcessRunning()
 {
@@ -144,10 +144,10 @@ uint8_t I2CStressTest_IsStressTestProcessRunning()
 }
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTest_StressTestProcessEnd
- @¹¦ÄÜ£º½áÊøI2CÑ¹²â
- @²ÎÊý£ºnone
- @·µ»Ø£ºnone
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTest_StressTestProcessEnd
+ @ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½I2CÑ¹ï¿½ï¿½
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½none
+ @ï¿½ï¿½ï¿½Ø£ï¿½none
 *************************************************************************/
 void I2CStressTest_StressTestProcessEnd()
 {
@@ -157,10 +157,10 @@ void I2CStressTest_StressTestProcessEnd()
 }
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTest_ForceStopI2CStressTestProcess
- @¹¦ÄÜ£ºÇ¿ÖÆ½áÊøI2CÑ¹²â
- @²ÎÊý£ºnone
- @·µ»Ø£ºnone
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTest_ForceStopI2CStressTestProcess
+ @ï¿½ï¿½ï¿½Ü£ï¿½Ç¿ï¿½Æ½ï¿½ï¿½ï¿½I2CÑ¹ï¿½ï¿½
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½none
+ @ï¿½ï¿½ï¿½Ø£ï¿½none
 *************************************************************************/
 uint8_t I2CStressTest_ForceStopI2CStressTestProcess()
 {
@@ -175,10 +175,10 @@ uint8_t I2CStressTest_ForceStopI2CStressTestProcess()
 }
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTest_GetI2CTestResult
- @¹¦ÄÜ£º·µ»ØÑ¹²â½á¹û
- @²ÎÊý£ºnone
- @·µ»Ø£ºtestResult£¬Ñ¹²â½á¹û
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTest_GetI2CTestResult
+ @ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½none
+ @ï¿½ï¿½ï¿½Ø£ï¿½testResultï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½
 *************************************************************************/
 //I2CTEST_RESULT_T I2CStressTest_GetI2CTestResult()
 //{
@@ -186,10 +186,10 @@ uint8_t I2CStressTest_ForceStopI2CStressTestProcess()
 //}
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTest_ResetRunningState
- @¹¦ÄÜ£º¸´Î»I2CÔËÐÐ×´Ì¬
- @²ÎÊý£ºnone
- @·µ»Ø£ºnone
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTest_ResetRunningState
+ @ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Î»I2Cï¿½ï¿½ï¿½ï¿½×´Ì¬
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½none
+ @ï¿½ï¿½ï¿½Ø£ï¿½none
 *************************************************************************/
 void I2CStressTest_ResetRunningState()
 {
@@ -199,10 +199,10 @@ void I2CStressTest_ResetRunningState()
 }
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTestTask
- @¹¦ÄÜ£ºI2CÑ¹²âÈÎÎñ
- @²ÎÊý£ºnone
- @·µ»Ø£ºnone
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTestTask
+ @ï¿½ï¿½ï¿½Ü£ï¿½I2CÑ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½none
+ @ï¿½ï¿½ï¿½Ø£ï¿½none
 *************************************************************************/
 void I2CStressTestTask(void const * argument)
 {
@@ -220,10 +220,10 @@ void I2CStressTestTask(void const * argument)
 }
 
 /************************************************************************
- @Ãû³Æ£»I2CStressTest_TaskInit
- @¹¦ÄÜ£ºI2CÑ¹²âÈÎÎñ³õÊ¼»¯
- @²ÎÊý£ºnone
- @·µ»Ø£ºnone
+ @ï¿½ï¿½ï¿½Æ£ï¿½I2CStressTest_TaskInit
+ @ï¿½ï¿½ï¿½Ü£ï¿½I2CÑ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
+ @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½none
+ @ï¿½ï¿½ï¿½Ø£ï¿½none
 *************************************************************************/
 void I2CStressTest_TaskInit(void)
 {
