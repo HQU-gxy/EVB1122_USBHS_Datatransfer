@@ -33,4 +33,6 @@ target_sources(hal PRIVATE Driver/stm32f4xx/cmsis/src/system_stm32f4xx.c)
 target_include_directories(hal PUBLIC Driver/stm32f4xx/peripheral/inc)
 target_link_libraries(hal PUBLIC cmsis-f4)
 
+# use heap_4.c
+add_library(freeRTOS STATIC)
 

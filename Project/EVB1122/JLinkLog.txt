@@ -1,0 +1,105 @@
+T0E98 000:168.032   SEGGER J-Link V7.54 Log File
+T0E98 000:169.850   DLL Compiled: Sep  1 2021 10:41:51
+T0E98 000:169.910   Logging started @ 2023-12-06 05:14
+T0E98 000:169.954 - 169.976ms
+T0E98 000:170.316 JLINK_SetWarnOutHandler(...)
+T0E98 000:170.496 - 0.186ms
+T0E98 000:170.510 JLINK_OpenEx(...)
+T0E98 000:174.971   Firmware: J-Link v11 compiled Aug  2 2032 10:34:01
+T0E98 000:175.215   Firmware: J-Link v11 compiled Aug  2 2032 10:34:01
+T0E98 000:185.908   Hardware: V11.00
+T0E98 000:185.944   S/N: 601012376
+T0E98 000:185.960   OEM: SEGGER
+T0E98 000:185.974   Feature(s): FlashBP, GDB, JFlash, FlashDL, RDI
+T0E98 000:187.252   TELNET listener socket opened on port 19021
+T0E98 000:187.384   WEBSRV Starting webserver
+T0E98 000:187.508   WEBSRV Webserver running on local port 19080
+T0E98 000:207.716 - 37.263ms returns "O.K."
+T0E98 000:207.988 JLINK_GetEmuCaps()
+T0E98 000:208.001 - 0.018ms returns 0xB9FF7BBF
+T0E98 000:208.148 JLINK_TIF_GetAvailable(...)
+T0E98 000:208.271 - 0.132ms
+T0E98 000:208.288 JLINK_SetErrorOutHandler(...)
+T0E98 000:208.299 - 0.015ms
+T0E98 000:208.421 JLINK_ExecCommand("ProjectFile = "D:\EVBKS5E\EVB1122\1122≤‚ ‘\…œ¥´SharePoint\EVB1122_USBHS_Datatransfer\Project\EVB1122\JLinkSettings.ini"", ...). 
+T0E98 000:221.743   Ref file found at: C:\Keil_v5\ARM\Segger\JLinkDevices.ref
+T0E98 000:221.874   XML referenced by ref file: C:\Program Files\SEGGER\JLink_V754\JLinkDevices.xml
+T0E98 000:222.625   C:\Program Files\SEGGER\JLink_V754\JLinkDevices.xml evaluated successfully.
+T0E98 000:253.071 - 44.668ms returns 0x00
+T0E98 000:253.107 JLINK_ExecCommand("Device = STM32F429VETx", ...). 
+T0E98 000:255.503   Device "STM32F429VE" selected.
+T0E98 000:255.889 - 2.785ms returns 0x00
+T0E98 000:255.919 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T0E98 000:255.935 - 0.006ms returns 0x01
+T0E98 000:255.946 JLINK_GetHardwareVersion()
+T0E98 000:255.957 - 0.015ms returns 110000
+T0E98 000:255.968 JLINK_GetDLLVersion()
+T0E98 000:255.978 - 0.015ms returns 75400
+T0E98 000:255.991 JLINK_GetOEMString(...)
+T0E98 000:256.002 JLINK_GetFirmwareString(...)
+T0E98 000:256.013 - 0.015ms
+T0E98 000:256.028 JLINK_GetDLLVersion()
+T0E98 000:256.040 - 0.017ms returns 75400
+T0E98 000:256.053 JLINK_GetCompileDateTime()
+T0E98 000:256.064 - 0.016ms
+T0E98 000:256.079 JLINK_GetFirmwareString(...)
+T0E98 000:256.089 - 0.016ms
+T0E98 000:256.102 JLINK_GetHardwareVersion()
+T0E98 000:256.113 - 0.016ms returns 110000
+T0E98 000:256.126 JLINK_GetSN()
+T0E98 000:256.137 - 0.015ms returns 601012376
+T0E98 000:256.243 JLINK_GetOEMString(...)
+T0E98 000:256.276 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T0E98 000:258.009 - 1.762ms returns 0x00
+T0E98 000:258.049 JLINK_HasError()
+T0E98 000:258.678 JLINK_SetSpeed(1000)
+T0E98 000:258.833 - 0.166ms
+T0E98 000:259.073 JLINK_HasError()
+T0E98 000:259.097 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T0E98 000:259.108 - 0.016ms returns JLINKARM_RESET_TYPE_NORMAL
+T0E98 000:259.119 JLINK_Reset()
+T0E98 000:259.548   InitTarget() start
+T0E98 000:259.577    J-Link Script File: Executing InitTarget()
+T0E98 000:368.089   Can not attach to CPU. Trying connect under reset.
+T0E98 000:526.140   Connecting to CPU via connect under reset failed.
+T0E98 000:577.762   InitTarget() end
+T0E98 000:639.631   InitTarget() start
+T0E98 000:639.794    J-Link Script File: Executing InitTarget()
+T0E98 000:747.431   Can not attach to CPU. Trying connect under reset.
+T0E98 000:905.293   Connecting to CPU via connect under reset failed.
+T0E98 000:956.742   InitTarget() end
+T0E98 000:956.806 - 697.694ms
+T0E98 000:956.828 JLINK_GetId()
+T0E98 000:957.102   InitTarget() start
+T0E98 000:957.138    J-Link Script File: Executing InitTarget()
+T0E98 001:066.809   Can not attach to CPU. Trying connect under reset.
+T0E98 001:224.847   Connecting to CPU via connect under reset failed.
+T0E98 001:275.936   InitTarget() end
+T0E98 001:337.922   InitTarget() start
+T0E98 001:338.074    J-Link Script File: Executing InitTarget()
+T0E98 001:445.157   Can not attach to CPU. Trying connect under reset.
+T0E98 001:604.054   Connecting to CPU via connect under reset failed.
+T0E98 001:654.645   InitTarget() end
+T0E98 001:654.813 - 698.010ms returns 0x00000000
+T0E98 001:654.886 JLINK_GetId()
+T0E98 001:655.270   InitTarget() start
+T0E98 001:655.392    J-Link Script File: Executing InitTarget()
+T0E98 001:764.719   Can not attach to CPU. Trying connect under reset.
+T0E98 001:923.951   Connecting to CPU via connect under reset failed.
+T0E98 001:974.949   InitTarget() end
+T0E98 002:035.905   InitTarget() start
+T0E98 002:035.967    J-Link Script File: Executing InitTarget()
+T0E98 002:144.277   Can not attach to CPU. Trying connect under reset.
+T0E98 002:303.322   Connecting to CPU via connect under reset failed.
+T0E98 002:354.435   InitTarget() end
+T0E98 002:354.493 - 699.615ms returns 0x00000000
+T0E98 002:357.796 JLINK_GetFirmwareString(...)
+T0E98 002:357.822 - 0.031ms
+T0E98 003:688.696 JLINK_SWO_Control(JLINKARM_SWO_CMD_GET_SPEED_INFO, ...)
+T0E98 003:688.954 - 0.272ms returns 0x00
+T0E98 003:689.076 JLINK_SWO_Control(JLINKARM_SWO_CMD_GET_SPEED_INFO, ...)
+T0E98 003:689.294 - 0.231ms returns 0x00
+T0E98 014:320.598 JLINK_Close()
+T0E98 014:350.297 - 29.772ms
+T0E98 014:350.378   
+T0E98 014:350.387   Closed
