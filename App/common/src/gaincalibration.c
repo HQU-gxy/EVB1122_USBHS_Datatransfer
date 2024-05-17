@@ -10,9 +10,7 @@
 #include "banyan.h"
 #include "platform.h"
 #include "system.h"
-#include "banyan_para.c"
-// or InitRegList_ABD?
-#define InitRegList InitRegList_MTT
+#include "banyan_param.h"
 
 int16_t RawValueMax[CHANNEL_MAX];
 int16_t RawValueMin[CHANNEL_MAX];

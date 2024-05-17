@@ -72,8 +72,6 @@ target_include_directories(${APP_TARGET} PUBLIC App/common/inc)
 file(GLOB BANYAN_SOURCES Middleware/common/src/*.c)
 target_sources(${APP_TARGET} PRIVATE ${BANYAN_SOURCES})
 target_include_directories(${APP_TARGET} PUBLIC Middleware/common/inc)
-# source include for some fucking geniuses who think it's a good idea
-target_include_directories(${APP_TARGET} PUBLIC Middleware/common/sinc)
 # usb core
 file(GLOB USB_CORE_SOURCES Middleware/usb/device/Core/Src/*.c)
 target_sources(${APP_TARGET} PRIVATE ${USB_CORE_SOURCES})
@@ -88,3 +86,10 @@ target_sources(${APP_TARGET} PRIVATE ${PLATFORM_SOURCES})
 target_include_directories(${APP_TARGET} PUBLIC Middleware/platform/stm32/inc)
 target_link_libraries(${APP_TARGET} PRIVATE hal cmsis-rtos freeRTOS)
 
+set(LD_SCRIPT_PATH ldscript.ld)
+get_filename_component(LD_SCRIPT_PATH_ABSOLUTE ${LD_SCRIPT_PATH} ABSOLUTE)
+set_target_properties(${APP_TARGET} PROPERTIES
+        LINK_DEPENDS ${LD_SCRIPT_PATH_ABSOLUTE}
+        LINK_FLAGS "-T ${LD_SCRIPT_PATH_ABSOLUTE} \
+                    -Wl,-Map=${PROJECT_NAME}.map "
+)

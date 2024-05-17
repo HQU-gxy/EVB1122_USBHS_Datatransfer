@@ -6,15 +6,15 @@
   ******************************************************************************
   */
 #include <stdio.h>
-#include "../inc/I2CStressTest.h"
-#include "../../../Config/global_conf.h"
-#include "../../../Config/utilities.h"
-#include "../inc/cmdprocess.h"
-#include "../../../Middleware/common/inc/platform.h"
-#include "../../../Middleware/common/inc/banyan.h"
+#include "I2CStressTest.h"
+#include "global_conf.h"
+#include "utilities.h"
+#include "cmdprocess.h"
+#include "platform.h"
+#include "banyan.h"
 #ifdef STM32_PLATFORM
-#include "../../../Middleware/freertos/CMSIS_RTOS/cmsis_os.h"
-#include "../inc/rtos.h"
+#include "cmsis_os.h"
+#include "rtos.h"
 #endif
 
 #ifdef STM32_PLATFORM
@@ -25,10 +25,10 @@ static I2CTEST_RESULT_T testResult = {0};
 static uint8_t forceStop = 0;
 
 /************************************************************************
- @���ƣ�I2CStressTest_Send2I2CTestDataQueue
- @���ܣ�����I2C���������ݶ���
- @������I2CData������ָ��
- @���أ�none
+ @名称；I2CStressTest_Send2I2CTestDataQueue
+ @功能：发送I2C数据至数据队列
+ @参数：I2CData，数据指针
+ @返回：none
 *************************************************************************/
 void I2CStressTest_Send2I2CTestDataQueue(void *I2CData)
 {
@@ -41,11 +41,11 @@ void I2CStressTest_Send2I2CTestDataQueue(void *I2CData)
 }
 
 /************************************************************************
- @���ƣ�I2CStressTest_Process
- @���ܣ�I2Cѹ�⺯��
- @������buf������ָ��
-        len�����ݳ���
- @���أ�none
+ @名称；I2CStressTest_Process
+ @功能：I2C压测函数
+ @参数：buf，数据指针
+        len，数据长度
+ @返回：none
 *************************************************************************/
 void I2CStressTest_Process(uint8_t* buf, uint16_t len)
 {
@@ -133,10 +133,10 @@ void I2CStressTest_Process(uint8_t* buf, uint16_t len)
 }
 
 /************************************************************************
- @���ƣ�I2CStressTest_IsStressTestProcessRunning
- @���ܣ�����I2C�Ƿ�����
- @������none
- @���أ�none
+ @名称；I2CStressTest_IsStressTestProcessRunning
+ @功能：返回I2C是否运行
+ @参数：none
+ @返回：none
 *************************************************************************/
 uint8_t I2CStressTest_IsStressTestProcessRunning()
 {
@@ -144,10 +144,10 @@ uint8_t I2CStressTest_IsStressTestProcessRunning()
 }
 
 /************************************************************************
- @���ƣ�I2CStressTest_StressTestProcessEnd
- @���ܣ�����I2Cѹ��
- @������none
- @���أ�none
+ @名称；I2CStressTest_StressTestProcessEnd
+ @功能：结束I2C压测
+ @参数：none
+ @返回：none
 *************************************************************************/
 void I2CStressTest_StressTestProcessEnd()
 {
@@ -157,10 +157,10 @@ void I2CStressTest_StressTestProcessEnd()
 }
 
 /************************************************************************
- @���ƣ�I2CStressTest_ForceStopI2CStressTestProcess
- @���ܣ�ǿ�ƽ���I2Cѹ��
- @������none
- @���أ�none
+ @名称；I2CStressTest_ForceStopI2CStressTestProcess
+ @功能：强制结束I2C压测
+ @参数：none
+ @返回：none
 *************************************************************************/
 uint8_t I2CStressTest_ForceStopI2CStressTestProcess()
 {
@@ -175,10 +175,10 @@ uint8_t I2CStressTest_ForceStopI2CStressTestProcess()
 }
 
 /************************************************************************
- @���ƣ�I2CStressTest_GetI2CTestResult
- @���ܣ�����ѹ����
- @������none
- @���أ�testResult��ѹ����
+ @名称；I2CStressTest_GetI2CTestResult
+ @功能：返回压测结果
+ @参数：none
+ @返回：testResult，压测结果
 *************************************************************************/
 //I2CTEST_RESULT_T I2CStressTest_GetI2CTestResult()
 //{
@@ -186,10 +186,10 @@ uint8_t I2CStressTest_ForceStopI2CStressTestProcess()
 //}
 
 /************************************************************************
- @���ƣ�I2CStressTest_ResetRunningState
- @���ܣ���λI2C����״̬
- @������none
- @���أ�none
+ @名称；I2CStressTest_ResetRunningState
+ @功能：复位I2C运行状态
+ @参数：none
+ @返回：none
 *************************************************************************/
 void I2CStressTest_ResetRunningState()
 {
@@ -199,10 +199,10 @@ void I2CStressTest_ResetRunningState()
 }
 
 /************************************************************************
- @���ƣ�I2CStressTestTask
- @���ܣ�I2Cѹ������
- @������none
- @���أ�none
+ @名称；I2CStressTestTask
+ @功能：I2C压测任务
+ @参数：none
+ @返回：none
 *************************************************************************/
 void I2CStressTestTask(void const * argument)
 {
@@ -220,10 +220,10 @@ void I2CStressTestTask(void const * argument)
 }
 
 /************************************************************************
- @���ƣ�I2CStressTest_TaskInit
- @���ܣ�I2Cѹ�������ʼ��
- @������none
- @���أ�none
+ @名称；I2CStressTest_TaskInit
+ @功能：I2C压测任务初始化
+ @参数：none
+ @返回：none
 *************************************************************************/
 void I2CStressTest_TaskInit(void)
 {

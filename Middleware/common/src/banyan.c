@@ -10,8 +10,8 @@
 #include "platform.h"
 #include "banyan.h"
 #include "config.h"
-#include "banyan_para.c"
 #include "stm32_spi.h"
+#include "banyan_param.h"
 
 uint8_t g_TxCount = (CHANNEL_MAX + 1) / 2;
 
