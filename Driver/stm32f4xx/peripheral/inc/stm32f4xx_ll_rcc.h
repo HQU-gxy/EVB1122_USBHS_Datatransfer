@@ -6705,6 +6705,9 @@ __STATIC_INLINE uint32_t LL_RCC_IsActiveFlag_HSECSS(void)
   return (READ_BIT(RCC->CIR, RCC_CIR_CSSF) == (RCC_CIR_CSSF));
 }
 
+#define RCC_CSR_IWDGRSTF_Pos               (29U)
+#define RCC_CSR_IWDGRSTF_Msk               (0x1UL << RCC_CSR_IWDGRSTF_Pos)      /*!< 0x20000000 */
+#define RCC_CSR_IWDGRSTF                   RCC_CSR_IWDGRSTF_Msk
 /**
   * @brief  Check if RCC flag Independent Watchdog reset is set or not.
   * @rmtoll CSR          IWDGRSTF      LL_RCC_IsActiveFlag_IWDGRST
@@ -6725,6 +6728,9 @@ __STATIC_INLINE uint32_t LL_RCC_IsActiveFlag_LPWRRST(void)
   return (READ_BIT(RCC->CSR, RCC_CSR_LPWRRSTF) == (RCC_CSR_LPWRRSTF));
 }
 
+#define RCC_CSR_PINRSTF_Pos                (26U)
+#define RCC_CSR_PINRSTF_Msk                (0x1UL << RCC_CSR_PINRSTF_Pos)       /*!< 0x04000000 */
+#define RCC_CSR_PINRSTF                    RCC_CSR_PINRSTF_Msk
 /**
   * @brief  Check if RCC flag Pin reset is set or not.
   * @rmtoll CSR          PINRSTF       LL_RCC_IsActiveFlag_PINRST

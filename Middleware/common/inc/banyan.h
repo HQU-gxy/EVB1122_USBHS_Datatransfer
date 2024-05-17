@@ -13,6 +13,7 @@
 #endif 
 
 #include <stdint.h>
+#include "stm32_misc.h"
 
 typedef enum  
 {

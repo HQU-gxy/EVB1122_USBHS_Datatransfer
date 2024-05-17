@@ -60,12 +60,12 @@ typedef unsigned long UBaseType_t;
 	typedef uint16_t TickType_t;
 	#define portMAX_DELAY ( TickType_t ) 0xffff
 #else
-	typedef uint32_t TickType_t;
-	#define portMAX_DELAY ( TickType_t ) 0xffffffffUL
+typedef uint32_t TickType_t;
+#define portMAX_DELAY ( TickType_t ) 0xffffffffUL
 
-	/* 32-bit tick type on a 32-bit architecture, so reads of the tick count do
-	not need to be guarded with a critical section. */
-	#define portTICK_TYPE_IS_ATOMIC 1
+/* 32-bit tick type on a 32-bit architecture, so reads of the tick count do
+not need to be guarded with a critical section. */
+#define portTICK_TYPE_IS_ATOMIC 1
 #endif
 /*-----------------------------------------------------------*/
 
@@ -99,8 +99,8 @@ typedef unsigned long UBaseType_t;
 /*-----------------------------------------------------------*/
 
 /* Critical section management. */
-extern void vPortEnterCritical( void );
-extern void vPortExitCritical( void );
+extern void vPortEnterCritical(void);
+extern void vPortExitCritical(void);
 
 #define portDISABLE_INTERRUPTS()				vPortRaiseBASEPRI()
 #define portENABLE_INTERRUPTS()					vPortSetBASEPRI( 0 )
@@ -113,8 +113,8 @@ extern void vPortExitCritical( void );
 
 /* Tickless idle/low power functionality. */
 #ifndef portSUPPRESS_TICKS_AND_SLEEP
-	extern void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime );
-	#define portSUPPRESS_TICKS_AND_SLEEP( xExpectedIdleTime ) vPortSuppressTicksAndSleep( xExpectedIdleTime )
+extern void vPortSuppressTicksAndSleep(TickType_t xExpectedIdleTime);
+#define portSUPPRESS_TICKS_AND_SLEEP( xExpectedIdleTime ) vPortSuppressTicksAndSleep( xExpectedIdleTime )
 #endif
 /*-----------------------------------------------------------*/
 
@@ -125,18 +125,18 @@ extern void vPortExitCritical( void );
 
 #if configUSE_PORT_OPTIMISED_TASK_SELECTION == 1
 
-	/* Check the configuration. */
-	#if( configMAX_PRIORITIES > 32 )
+/* Check the configuration. */
+#if( configMAX_PRIORITIES > 32 )
 		#error configUSE_PORT_OPTIMISED_TASK_SELECTION can only be set to 1 when configMAX_PRIORITIES is less than or equal to 32.  It is very rare that a system requires more than 10 to 15 difference priorities as tasks that share a priority will time slice.
-	#endif
+#endif
 
-	/* Store/clear the ready priorities in a bit map. */
-	#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL << ( uxPriority ) )
-	#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL << ( uxPriority ) )
+/* Store/clear the ready priorities in a bit map. */
+#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL << ( uxPriority ) )
+#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL << ( uxPriority ) )
 
-	/*-----------------------------------------------------------*/
+/*-----------------------------------------------------------*/
 
-	#define portGET_HIGHEST_PRIORITY( uxTopPriority, uxReadyPriorities ) uxTopPriority = ( 31UL - ( uint32_t ) __clz( ( uxReadyPriorities ) ) )
+#define portGET_HIGHEST_PRIORITY( uxTopPriority, uxReadyPriorities ) uxTopPriority = ( 31UL - ( uint32_t ) __clz( ( uxReadyPriorities ) ) )
 
 #endif /* taskRECORD_READY_PRIORITY */
 /*-----------------------------------------------------------*/
@@ -149,98 +149,106 @@ not necessary for to use this port.  They are defined so the common demo files
 /*-----------------------------------------------------------*/
 
 #ifdef configASSERT
-	void vPortValidateInterruptPriority( void );
-	#define portASSERT_IF_INTERRUPT_PRIORITY_INVALID() 	vPortValidateInterruptPriority()
+void vPortValidateInterruptPriority(void);
+#define portASSERT_IF_INTERRUPT_PRIORITY_INVALID() 	vPortValidateInterruptPriority()
 #endif
 
 /* portNOP() is not required by this port. */
 #define portNOP()
 
-#define portINLINE __inline
+#define portINLINE inline
+
+#ifdef portFORCE_INLINE
+#undef portFORCE_INLINE
+#endif
 
 #ifndef portFORCE_INLINE
-	#define portFORCE_INLINE __forceinline
+#define portFORCE_INLINE __attribute__(( always_inline )) inline
 #endif
 
 /*-----------------------------------------------------------*/
 
-static portFORCE_INLINE void vPortSetBASEPRI( uint32_t ulBASEPRI )
+static portFORCE_INLINE void vPortSetBASEPRI(uint32_t ulBASEPRI)
 {
-	__asm
-	{
-		/* Barrier instructions are not used as this function is only used to
-		lower the BASEPRI value. */
-		msr basepri, ulBASEPRI
-	}
+    __asm__ volatile (
+        "msr basepri, %0"
+        :
+        : "r" (ulBASEPRI)
+        : "memory"
+    );
 }
+
 /*-----------------------------------------------------------*/
 
-static portFORCE_INLINE void vPortRaiseBASEPRI( void )
+static portFORCE_INLINE void vPortRaiseBASEPRI(void)
 {
-uint32_t ulNewBASEPRI = configMAX_SYSCALL_INTERRUPT_PRIORITY;
+    uint32_t ulNewBASEPRI = configMAX_SYSCALL_INTERRUPT_PRIORITY;
 
-	__asm
-	{
-		/* Set BASEPRI to the max syscall priority to effect a critical
-		section. */
-		msr basepri, ulNewBASEPRI
-		dsb
-		isb
-	}
+    __asm__ volatile (
+        "msr basepri, %0\n"
+        "dsb\n"
+        "isb\n"
+        :
+        : "r" (ulNewBASEPRI)
+        : "memory"
+    );
 }
+
 /*-----------------------------------------------------------*/
 
-static portFORCE_INLINE void vPortClearBASEPRIFromISR( void )
+static portFORCE_INLINE void vPortClearBASEPRIFromISR(void)
 {
-	__asm
-	{
-		/* Set BASEPRI to 0 so no interrupts are masked.  This function is only
-		used to lower the mask in an interrupt, so memory barriers are not 
-		used. */
-		msr basepri, #0
-	}
+    __asm__ volatile (
+        "msr basepri, #0"
+        :
+        :
+        : "memory"
+    );
 }
+
 /*-----------------------------------------------------------*/
 
-static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI( void )
+static portFORCE_INLINE uint32_t ulPortRaiseBASEPRI(void)
 {
-uint32_t ulReturn, ulNewBASEPRI = configMAX_SYSCALL_INTERRUPT_PRIORITY;
+    uint32_t ulReturn;
+    uint32_t ulNewBASEPRI = configMAX_SYSCALL_INTERRUPT_PRIORITY;
 
-	__asm
-	{
-		/* Set BASEPRI to the max syscall priority to effect a critical
-		section. */
-		mrs ulReturn, basepri
-		msr basepri, ulNewBASEPRI
-		dsb
-		isb
-	}
+    __asm__ volatile (
+        "mrs %0, basepri\n"
+        "msr basepri, %1\n"
+        "dsb\n"
+        "isb\n"
+        : "=r" (ulReturn)
+        : "r" (ulNewBASEPRI)
+        : "memory"
+    );
 
-	return ulReturn;
+    return ulReturn;
 }
+
 /*-----------------------------------------------------------*/
 
-static portFORCE_INLINE BaseType_t xPortIsInsideInterrupt( void )
+static portFORCE_INLINE BaseType_t xPortIsInsideInterrupt(void)
 {
-uint32_t ulCurrentInterrupt;
-BaseType_t xReturn;
+    uint32_t ulCurrentInterrupt;
+    BaseType_t xReturn;
 
-	/* Obtain the number of the currently executing interrupt. */
-	__asm
-	{
-		mrs ulCurrentInterrupt, ipsr
-	}
+    /* Obtain the number of the currently executing interrupt. */
+    __asm__ volatile (
+        "mrs %0, ipsr"
+        : "=r" (ulCurrentInterrupt)
+    );
 
-	if( ulCurrentInterrupt == 0 )
-	{
-		xReturn = pdFALSE;
-	}
-	else
-	{
-		xReturn = pdTRUE;
-	}
+    if (ulCurrentInterrupt == 0)
+    {
+        xReturn = pdFALSE;
+    }
+    else
+    {
+        xReturn = pdTRUE;
+    }
 
-	return xReturn;
+    return xReturn;
 }
 
 
@@ -249,4 +257,3 @@ BaseType_t xReturn;
 #endif
 
 #endif /* PORTMACRO_H */
-
