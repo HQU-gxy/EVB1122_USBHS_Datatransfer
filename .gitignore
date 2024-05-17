@@ -33,3 +33,6 @@ Project
 *.app
 
 !Script/radarPara2Array.exe
+
+cmake-*
+build
