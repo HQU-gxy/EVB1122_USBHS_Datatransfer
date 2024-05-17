@@ -1,0 +1,1 @@
+..\..\Script\radarPara2Array.exe ..\..\Config\radarPara\EVB1122.txt ..\..\Config\radarPara\EVBKS5E_bodysensing.txt ..\..\Config\radarPara\EVBKS5E_MTT.txt ..\..\Middleware\common\src\banyan_para.c 
