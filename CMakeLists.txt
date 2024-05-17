@@ -52,9 +52,9 @@ file(GLOB FREERTOS_SOURCES Middleware/freertos/*.c)
 target_sources(freeRTOS PRIVATE ${FREERTOS_SOURCES})
 target_sources(freeRTOS PRIVATE Middleware/freertos/portable/MemMang/heap_4.c)
 # https://github.com/FreeRTOS/FreeRTOS-Kernel/blob/main/portable/GCC/ARM_CM4F/portmacro.h
-target_sources(freeRTOS PRIVATE Middleware/freertos/portable/RVDS/ARM_CM4F/port.c)
+target_sources(freeRTOS PRIVATE Middleware/freertos/portable/GCC/ARM_CM4F/port.c)
 target_include_directories(freeRTOS PUBLIC Middleware/freertos/include)
-target_include_directories(freeRTOS PUBLIC Middleware/freertos/portable/RVDS/ARM_CM4F)
+target_include_directories(freeRTOS PUBLIC Middleware/freertos/portable/GCC/ARM_CM4F)
 target_link_libraries(freeRTOS PUBLIC hal config)
 
 add_library(cmsis-rtos STATIC)
