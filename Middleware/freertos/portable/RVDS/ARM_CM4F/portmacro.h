@@ -103,12 +103,10 @@ typedef unsigned long    UBaseType_t;
     {                                            \
         if( xSwitchRequired != pdFALSE )         \
         {                                        \
-            traceISR_EXIT_TO_SCHEDULER();        \
             portYIELD();                         \
         }                                        \
         else                                     \
         {                                        \
-            traceISR_EXIT();                     \
         }                                        \
     } while( 0 )
 #define portYIELD_FROM_ISR( x )    portEND_SWITCHING_ISR( x )
