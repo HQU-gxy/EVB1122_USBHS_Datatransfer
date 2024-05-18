@@ -1177,30 +1177,8 @@ osThreadId dataProcTaskHandle;
 QueueHandle_t radarDataQueue[CHANNEL_MAX];
 osThreadId mcuSpecialFuncTaskHandle;
 
-/********************************************
- @名称；DataProc_Send2RadarDataQueue
- @功能：发送数据至队列
- @参数：channel，接收通道
-        radarData，雷达数据指针
- @返回：none
-*********************************************/
-void DataProc_Send2RadarDataQueue(uint8_t channel, void *radarData)
-{
-    BaseType_t xHigherPriorityTaskWoken = 0;
-    
-    if (channel >= CHANNEL_MAX || NULL == radarData)
-    {
-        return;
-    }
-    
-    if (xQueueSendFromISR(radarDataQueue[channel], radarData, &xHigherPriorityTaskWoken) != pdPASS) 
-    {
-        Indicator_RadarDataRecvOverFlow();
-    }
-    
-    portYIELD_FROM_ISR(xHigherPriorityTaskWoken); 
-}
 
+// ReSharper disable once CppDFAEndlessLoop
 /********************************************
  @名称；DataProcTask
  @功能：SPI数据接收任务初始化
@@ -1211,9 +1189,9 @@ void DataProcTask(void const * argument)
 {
     RADAR_DATA_T radarData = {0};
     uint16_t loop = 0;
-        
+
     while(1)
-    { 
+    {
         for (loop = 0; loop < 2*g_ChipCount; loop++)
         {
             if (DATA_TYPE_DFFT_PEAK == RadarPara.dataType
@@ -1229,15 +1207,15 @@ void DataProcTask(void const * argument)
                 }
             }
             else if((RadarPara.rxType & BIT(loop)) == 0)
-            {                
-                continue;     
+            {
+                continue;
             }
-            
+
             if(!uxQueueSpacesAvailable(radarDataQueue[loop]))
             {
                 Indicator_RadarDataRecvOverFlow();
-                DataProc_ResetRadarDataQueue(); 
-            }   
+                DataProc_ResetRadarDataQueue();
+            }
 
             if (xQueueReceive(radarDataQueue[loop], &radarData, portMAX_DELAY))
             {
@@ -1245,10 +1223,10 @@ void DataProcTask(void const * argument)
                 {
                     break;
                 }
-                
-                gDataprocessFlag = 1;  
-                CACHE_InvalDCache((uint32_t*)radarData.buf, radarData.len); 
-                                    
+
+                gDataprocessFlag = 1;
+                CACHE_InvalDCache((uint32_t*)radarData.buf, radarData.len);
+
                 if(DATA_TYPE_DFFT_PEAK != RadarPara.dataType &&
                     RadarPara.mergeData)
                 {
@@ -1271,7 +1249,7 @@ void DataProcTask(void const * argument)
                         pBuf0[i] = pBuf1[2 * i];
                         pBuf2[i] = pBuf1[2 * i + 1];
                     }
-                    
+
                     DataProcess(loop, radarData.dmaFlag, (uint8_t*)pBuf0, countTemp * 4);
                     DataProcess(loop + 1, radarData.dmaFlag, (uint8_t*)pBuf2, countTemp * 4);
                 }
@@ -1282,7 +1260,7 @@ void DataProcTask(void const * argument)
                 gDataprocessFlag = 0;
             }
         }
-    } 
+    }
 }
 
 /************************************************************************
@@ -1306,7 +1284,7 @@ void DataProc_ResetRadarDataQueue(void)
  @参数：none
  @返回：none
 *************************************************************************/
-/* 
+/*
     温度读取步骤：
     radar->readReg(0x71, R71);
     value = R71;
@@ -1329,7 +1307,7 @@ void McuSepcialFuncTask(void const * argument)
 
     while(1)
     {
-        
+
 //        if(!sysPara.useMcuPackWrapper || ((mcuSpecialFunc.tempReportGap == 0) && (mcuSpecialFunc.powerReportGap == 0)))
 		if(!sysPara.useMcuPackWrapper)
         {
@@ -1340,7 +1318,7 @@ void McuSepcialFuncTask(void const * argument)
         {
             if ((!CmdProc_InCmdMode())  && (flag_read_TS == 1) )
             {
-							
+
 							  flag_read_TS = 0;
 							  SPI_DeInit();
                 SPI4_Config_Init();
@@ -1352,17 +1330,17 @@ void McuSepcialFuncTask(void const * argument)
                     regTemp = reg77[i];
                     regTemp |= 0x500; // Set bit8, bit10
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x77, regTemp);
-                    
+
                     SPI4_Read(sysPara.chipAddr[i] * 2, 0x71, &reg71[i]);
-                    
+
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x71, 0x5021);
 
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x71, 0x5821);
-                    
+
                     /*regTemp &= 0x07FF;
                     regTemp |= 0x5800;
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x71, regTemp);     */
-                    
+
                     SPI4_Read(sysPara.chipAddr[i] * 2, 0x73, &reg73[i]);
 
                     if((reg73[i] & 0x800) == 0)
@@ -1380,15 +1358,15 @@ void McuSepcialFuncTask(void const * argument)
                 }
 								SPI_DeInit();
                 uint16_t uSpiDataLen = RadarPara.mergeData ? RadarPara.dataLen * 4 : RadarPara.dataLen * 2;
-		            SPI_Init(uSpiDataLen); 
+		            SPI_Init(uSpiDataLen);
                 if(valueValid)
-                {   
+                {
 ////					vTaskDelay(mcuSpecialFunc.tempReportGap);
                     UsbTransfer_Send(g_ChipTempDataPack, 16 * sysPara.chipNum, 0);
 
                 }
             }
-            
+
         }
         if(sysPara.useMcuPackWrapper)
         {
@@ -1397,7 +1375,7 @@ void McuSepcialFuncTask(void const * argument)
 							  flag_read_PD = 0;
 							  SPI_DeInit();
                 SPI4_Config_Init();
-							
+
                 valueValid = 1;
                 for(i = 0; i < sysPara.chipNum;i++)
                 {
@@ -1406,21 +1384,21 @@ void McuSepcialFuncTask(void const * argument)
                     regTemp = reg77[i];
                     regTemp |= 0x500; // Set bit8, bit10
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x77, regTemp);
-                    
+
                     SPI4_Read(sysPara.chipAddr[i] * 2, 0x71, &reg71[i]);
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x71, 0xE021);
 
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x71, 0xE821);
 
                     SPI4_Read(sysPara.chipAddr[i] * 2, 0x73, &reg73[i]);
-                    
+
                     if((reg73[i] & 0x800) == 0)
                     {
                         valueValid = 0;
                     }
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x71, reg71[i]);
                     SPI4_Write(sysPara.chipAddr[i] * 2, 0x77, reg77[i]);
-                    
+
                     *(volatile uint32_t *)&g_ChipPowerDataPack[16 * i] = SPI_FRAME_WRAPPER_HEAD;
                     *(volatile uint16_t *)&g_ChipPowerDataPack[16 * i + 4] = 4;
                     g_ChipPowerDataPack[16 * i + 6] = 0x81;
@@ -1428,18 +1406,18 @@ void McuSepcialFuncTask(void const * argument)
                     *(volatile uint32_t *)&g_ChipPowerDataPack[16 * i + 8] = (uint32_t)reg73[i];
                     *(volatile uint32_t *)&g_ChipPowerDataPack[16 * i + 12] = SPI_FRAME_WRAPPER_TAIL;
                 }
-								
+
 								SPI_DeInit();
                 uint16_t uSpiDataLen = RadarPara.mergeData ? RadarPara.dataLen * 4 : RadarPara.dataLen * 2;
-		            SPI_Init(uSpiDataLen); 
-								
+		            SPI_Init(uSpiDataLen);
+
                 if(valueValid)
                 {
 //									  vTaskDelay(mcuSpecialFunc.powerReportGap);
                     UsbTransfer_Send(g_ChipPowerDataPack, 16 * sysPara.chipNum, 0);
                 }
             }
-            
+
         }
     }
 }
@@ -1465,14 +1443,14 @@ void DataProc_TaskInit(void)
     {
         RunFailed((uint8_t *)__FILE__, __LINE__);
     }
-    
+
     osThreadDef(mcuSepcialFuncTask, McuSepcialFuncTask, osPriorityNormal, 0, 256);
     mcuSpecialFuncTaskHandle = osThreadCreate(osThread(mcuSepcialFuncTask), NULL);
     if (NULL == mcuSpecialFuncTaskHandle)
     {
         RunFailed((uint8_t *)__FILE__, __LINE__);
     }
-    
+
     if(sysPara.useMcuPackWrapper)
     {
         mcuSpecialFunc.isPowerCheckEnable = 1;
@@ -1483,10 +1461,35 @@ void DataProc_TaskInit(void)
         mcuSpecialFunc.isPowerCheckEnable = 0;
         mcuSpecialFunc.isTempCheckEnable = 0;
     }
-    
+
     mcuSpecialFunc.powerReportGap = 0;
     mcuSpecialFunc.tempReportGap = 0;
 
 }
+
+/********************************************
+ @名称；DataProc_Send2RadarDataQueue
+ @功能：发送数据至队列
+ @参数：channel，接收通道
+        radarData，雷达数据指针
+ @返回：none
+*********************************************/
+void DataProc_Send2RadarDataQueue(uint8_t channel, void *radarData)
+{
+    BaseType_t xHigherPriorityTaskWoken = 0;
+    
+    if (channel >= CHANNEL_MAX || NULL == radarData)
+    {
+        return;
+    }
+    
+    if (xQueueSendFromISR(radarDataQueue[channel], radarData, &xHigherPriorityTaskWoken) != pdPASS) 
+    {
+        Indicator_RadarDataRecvOverFlow();
+    }
+    
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken); 
+}
+
 #endif
 

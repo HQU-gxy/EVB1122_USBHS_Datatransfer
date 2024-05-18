@@ -1653,6 +1653,46 @@ osThreadId cmdProcTaskHandle;
 QueueHandle_t cmdDataQueue;
 
 /********************************************
+ @名称；CmdProcTask
+ @功能：命令行任务函数
+ @参数：none
+ @返回：none
+*********************************************/
+void CmdProcTask(void const * argument)
+{
+    CMD_DATA_T cmdData = {0};
+
+    while(1)
+    {
+        if (xQueueReceive(cmdDataQueue, &cmdData, portMAX_DELAY))
+        {
+            CmdProcess(cmdData.buf, cmdData.len);
+        }
+    }
+}
+
+/********************************************
+ @名称；CmdProc_TaskInit
+ @功能：命令行任务初始化
+ @参数：none
+ @返回：none
+*********************************************/
+void CmdProc_TaskInit(void)
+{
+    cmdDataQueue = xQueueCreate(CMD_DATA_QUEUE_SIZE, sizeof(CMD_DATA_T));
+
+    osThreadDef(cmdProcTask, CmdProcTask, osPriorityHigh, 0, CMD_PROC_STACK_SIZE);
+    cmdProcTaskHandle = osThreadCreate(osThread(cmdProcTask), NULL);
+
+    g_McuSpecialFuncSig = xSemaphoreCreateBinary();
+
+    if (NULL == cmdProcTaskHandle)
+    {
+        RunFailed((uint8_t *)__FILE__, __LINE__);
+    }
+}
+
+/********************************************
  @名称；CmdProc_Send2CmdDataQueue
  @功能：将命令行数据传输至队列
  @参数：cmdData，命令行数据指针
@@ -1673,46 +1713,6 @@ void CmdProc_Send2CmdDataQueue(void *cmdData)
     }
     
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken); 
-}
-
-/********************************************
- @名称；CmdProcTask
- @功能：命令行任务函数
- @参数：none
- @返回：none
-*********************************************/
-void CmdProcTask(void const * argument)
-{
-    CMD_DATA_T cmdData = {0};
-        
-    while(1)
-    { 
-        if (xQueueReceive(cmdDataQueue, &cmdData, portMAX_DELAY))
-        {
-            CmdProcess(cmdData.buf, cmdData.len);
-        }
-    } 
-}
-
-/********************************************
- @名称；CmdProc_TaskInit
- @功能：命令行任务初始化
- @参数：none
- @返回：none
-*********************************************/
-void CmdProc_TaskInit(void)
-{
-    cmdDataQueue = xQueueCreate(CMD_DATA_QUEUE_SIZE, sizeof(CMD_DATA_T));
-    
-    osThreadDef(cmdProcTask, CmdProcTask, osPriorityHigh, 0, CMD_PROC_STACK_SIZE);
-    cmdProcTaskHandle = osThreadCreate(osThread(cmdProcTask), NULL);
-
-    g_McuSpecialFuncSig = xSemaphoreCreateBinary();
-
-    if (NULL == cmdProcTaskHandle)
-    {
-        RunFailed((uint8_t *)__FILE__, __LINE__);
-    }
 }
 #endif
 
