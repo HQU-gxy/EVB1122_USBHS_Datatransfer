@@ -18,10 +18,10 @@ static FLASH_DATA_T flashData;
 static uint8_t needFlashWrite = 0;
 
 /********************************************
- @Ãû³Æ£»Config_ReloadAlgoRegister
- @¹¦ÄÜ£ºÖØĞÂ¸³Öµ²ÎÊı
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›Config_ReloadAlgoRegister
+ @åŠŸèƒ½ï¼šé‡æ–°èµ‹å€¼å‚æ•°
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void Config_ReloadAlgoRegister(uint16_t systemMode)
 {
@@ -65,10 +65,10 @@ void Config_ReloadAlgoRegister(uint16_t systemMode)
 }
 
 /********************************************
- @Ãû³Æ£»Config_WriteData2Flash
- @¹¦ÄÜ£º½«ÖØĞÂÅäÖÃµÄflashDataĞ´Èëflash
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›Config_WriteData2Flash
+ @åŠŸèƒ½ï¼šå°†é‡æ–°é…ç½®çš„flashDataå†™å…¥flash
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void Config_WriteData2Flash(void)
 {
@@ -91,10 +91,10 @@ void Config_WriteData2Flash(void)
 }
 
 /********************************************
- @Ãû³Æ£»Config_RetrieveFlashData
- @¹¦ÄÜ£ºRetrieve Flash Data
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›Config_RetrieveFlashData
+ @åŠŸèƒ½ï¼šRetrieve Flash Data
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void Config_RetrieveFlashData(void)
 {
@@ -137,10 +137,10 @@ void Config_RetrieveFlashData(void)
 }
 
 /********************************************
- @Ãû³Æ£»Config_SavePara2Flash
- @¹¦ÄÜ£º²ÎÊıĞ´ÈëflashµÄÈë¿Úº¯Êı
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›Config_SavePara2Flash
+ @åŠŸèƒ½ï¼šå‚æ•°å†™å…¥flashçš„å…¥å£å‡½æ•°
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void Config_SavePara2Flash(void)
 {    
@@ -154,10 +154,10 @@ void Config_SavePara2Flash(void)
 }
 
 /********************************************
- @Ãû³Æ£»Config_EarseFlashData
- @¹¦ÄÜ£º²Á³ıflashÒ³
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›Config_EarseFlashData
+ @åŠŸèƒ½ï¼šæ“¦é™¤flashé¡µ
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void Config_EarseFlashData(void)
 {    
@@ -165,10 +165,10 @@ void Config_EarseFlashData(void)
 }
 
 /********************************************
- @Ãû³Æ£»Config_NeedFlashWrite
- @¹¦ÄÜ£ºÖÃÎ»flashĞ´Èëflag
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›Config_NeedFlashWrite
+ @åŠŸèƒ½ï¼šç½®ä½flashå†™å…¥flag
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void Config_NeedFlashWrite(void)
 {
@@ -176,10 +176,10 @@ void Config_NeedFlashWrite(void)
 }
 
 /********************************************
- @Ãû³Æ£»Config_GetSN
- @¹¦ÄÜ£º»Ø¶ÁSN
- @²ÎÊı£ºnone
- @·µ»Ø£ºSNºÅµØÖ·
+ @åç§°ï¼›Config_GetSN
+ @åŠŸèƒ½ï¼šå›è¯»SN
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šSNå·åœ°å€
 *********************************************/
 //uint32_t Config_GetSN(void)
 //{
@@ -189,10 +189,10 @@ void Config_NeedFlashWrite(void)
 //}
 
 /********************************************
- @Ãû³Æ£»Config_Init
- @¹¦ÄÜ£º²ÎÊıÅäÖÃ³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›Config_Init
+ @åŠŸèƒ½ï¼šå‚æ•°é…ç½®åˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void Config_Init(void)
 {

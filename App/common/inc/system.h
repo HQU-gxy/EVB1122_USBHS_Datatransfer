@@ -41,8 +41,8 @@ typedef struct _mcu_special_func
 
 enum _mcu_func_para
 {
-    TEMP_CHECK_ENABLE = 0,    /* ʹ���¶ȼ�⣬ֵΪ����������룩��ֵΪ0��ʾ�ر� */
-    POWER_CHECK_ENABLE,       /* ʹ�ܹ��ʼ�⣬ֵΪ����������룩��ֵΪ0��ʾ�ر� */
+    TEMP_CHECK_ENABLE = 0,    /* 使能温度检测，值为检测间隔（毫秒），值为0表示关闭 */
+    POWER_CHECK_ENABLE,       /* 使能功率检测，值为检测间隔（毫秒），值为0表示关闭 */
 };
 
 extern mcu_special_func_t mcuSpecialFunc;

@@ -27,10 +27,10 @@ static uint32_t usbPktCnt = 0;
 static uint32_t usbPktCntOld = 0;
 
 /************************************************************************
- @Ãû³Æ£»UsbTransfer_UsbPktCntCallBack
- @¹¦ÄÜ£ºUSB´«ÊäÊı¾İ°üÊı»Øµ÷º¯Êı
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›UsbTransfer_UsbPktCntCallBack
+ @åŠŸèƒ½ï¼šUSBä¼ è¾“æ•°æ®åŒ…æ•°å›è°ƒå‡½æ•°
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void UsbTransfer_UsbPktCntCallBack(void)
 {
@@ -81,10 +81,10 @@ void UsbTransfer_UsbPktCntCallBack(void)
 //}
 
 /************************************************************************
- @Ãû³Æ£»UsbTransfer_ResetUsbBuffer
- @¹¦ÄÜ£ºÇå¿ÕUSB´«Êäbuffer
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›UsbTransfer_ResetUsbBuffer
+ @åŠŸèƒ½ï¼šæ¸…ç©ºUSBä¼ è¾“buffer
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void UsbTransfer_ResetUsbBuffer(void)
 {
@@ -120,12 +120,12 @@ void UsbTransfer_ForceSend(void)
 
 #if defined(SUPPORT_DATA_PASSTHROUGH) || defined(SUPPORT_DYNAMIC_SYS_MODE)
 /************************************************************************
- @Ãû³Æ£»UsbTransfer_Send
- @¹¦ÄÜ£º´«ÊäusbÊı¾İ
- @²ÎÊı£ºpBuffer£¬´ı´«Êäbuffer
-        uBufLen£¬Êı¾İ³¤¶È
-        bDirectSend£¬ÊÇ·ñÁ¢¼´·¢ËÍflag
- @·µ»Ø£ºnone
+ @åç§°ï¼›UsbTransfer_Send
+ @åŠŸèƒ½ï¼šä¼ è¾“usbæ•°æ®
+ @å‚æ•°ï¼špBufferï¼Œå¾…ä¼ è¾“buffer
+        uBufLenï¼Œæ•°æ®é•¿åº¦
+        bDirectSendï¼Œæ˜¯å¦ç«‹å³å‘é€flag
+ @è¿”å›ï¼šnone
 *************************************************************************/
 uint8_t UsbTransfer_Send(uint8_t* pBuffer, uint16_t uBufLen, uint8_t bDirectSend)
 {	
@@ -169,10 +169,10 @@ uint8_t UsbTransfer_Send(uint8_t* pBuffer, uint16_t uBufLen, uint8_t bDirectSend
 #endif
 
 /************************************************************************
- @Ãû³Æ£»UsbTransfer_Send2UsbDataQueue
- @¹¦ÄÜ£º´«ÊäÊı¾İÖÁusbÊı¾İ¶ÓÁĞ
- @²ÎÊı£ºusbData£¬usbÊı¾İÖ¸Õë
- @·µ»Ø£ºnone
+ @åç§°ï¼›UsbTransfer_Send2UsbDataQueue
+ @åŠŸèƒ½ï¼šä¼ è¾“æ•°æ®è‡³usbæ•°æ®é˜Ÿåˆ—
+ @å‚æ•°ï¼šusbDataï¼Œusbæ•°æ®æŒ‡é’ˆ
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void UsbTransfer_Send2UsbDataQueue(void *usbData)
 {	
@@ -194,10 +194,10 @@ void UsbTransfer_Send2UsbDataQueue(void *usbData)
 }
 
 /************************************************************************
- @Ãû³Æ£»UsbTransferTask
- @¹¦ÄÜ£ºusb´«ÊäÈÎÎñ
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›UsbTransferTask
+ @åŠŸèƒ½ï¼šusbä¼ è¾“ä»»åŠ¡
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void UsbTransferTask(void const * argument)
 {
@@ -224,10 +224,10 @@ void UsbTransferTask(void const * argument)
 }
 
 /************************************************************************
- @Ãû³Æ£»UsbTransfer_TaskInit
- @¹¦ÄÜ£ºusb´«ÊäÈÎÎñ³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›UsbTransfer_TaskInit
+ @åŠŸèƒ½ï¼šusbä¼ è¾“ä»»åŠ¡åˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void UsbTransfer_TaskInit(void)
 {

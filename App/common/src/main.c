@@ -1,11 +1,11 @@
 /*********************************************************************************************************************
  * COPYRIGHT NOTICE
- * Copyright (c) 2022, ÎùµäÎ¢
+ * Copyright (c) 2022, çŸ½å…¸å¾®
  * All rights reserved.
  *
- * ±¾¹Ì¼ş°üËùÓĞÄÚÈİ°æÈ¨¾ùÊôÎùµäÎ¢ËùÓĞ
+ * æœ¬å›ºä»¶åŒ…æ‰€æœ‰å†…å®¹ç‰ˆæƒå‡å±çŸ½å…¸å¾®æ‰€æœ‰
  * @file           main
- * @company        ÎùµäÎ¢
+ * @company        çŸ½å…¸å¾®
  * @author         RSS
  * @version        v1.0.0
  * @Target core    S5KM1122
@@ -27,9 +27,9 @@
 int main(void)
 {   
 //#if defined RUN_APP0
-//    SCB->VTOR = FLASH_BASE | 0x20000;//ÉèÖÃÆ«ÒÆÁ¿
+//    SCB->VTOR = FLASH_BASE | 0x20000;//è®¾ç½®åç§»é‡
 //#elif defined RUN_APP1
-//    SCB->VTOR = FLASH_BASE | 0x40000;//ÉèÖÃÆ«ÒÆÁ¿
+//    SCB->VTOR = FLASH_BASE | 0x40000;//è®¾ç½®åç§»é‡
 //#endif
     Platform_Init();
     delay_ms(8);

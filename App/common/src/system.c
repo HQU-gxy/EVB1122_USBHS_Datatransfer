@@ -21,10 +21,10 @@ mcu_special_func_t mcuSpecialFunc __ALIGN(4);
 SN_INFO_T snInfo;
 
 /************************************************************************
- @Ãû³Æ£»System_GetSysParaAddr
- @¹¦ÄÜ£º·µ»ØsysPara½á¹¹ÌåÖ¸Õë
- @²ÎÊı£ºnone
- @·µ»Ø£ºsysPara½á¹¹ÌåÖ¸Õë
+ @åç§°ï¼›System_GetSysParaAddr
+ @åŠŸèƒ½ï¼šè¿”å›sysParaç»“æ„ä½“æŒ‡é’ˆ
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šsysParaç»“æ„ä½“æŒ‡é’ˆ
 *************************************************************************/
 void* System_GetSysParaAddr(void)
 {
@@ -32,10 +32,10 @@ void* System_GetSysParaAddr(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_GetSysParaLen
- @¹¦ÄÜ£º·µ»ØsysPara½á¹¹Ìå³¤¶È
- @²ÎÊı£ºnone
- @·µ»Ø£ºsysPara½á¹¹Ìå³¤¶È
+ @åç§°ï¼›System_GetSysParaLen
+ @åŠŸèƒ½ï¼šè¿”å›sysParaç»“æ„ä½“é•¿åº¦
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šsysParaç»“æ„ä½“é•¿åº¦
 *************************************************************************/
 uint32_t System_GetSysParaLen(void)
 {
@@ -43,10 +43,10 @@ uint32_t System_GetSysParaLen(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_GetSysMode
- @¹¦ÄÜ£º·µ»ØsystemMode
- @²ÎÊı£ºnone
- @·µ»Ø£ºsystemMode
+ @åç§°ï¼›System_GetSysMode
+ @åŠŸèƒ½ï¼šè¿”å›systemMode
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šsystemMode
 *************************************************************************/
 uint16_t System_GetSysMode(void)
 {
@@ -54,10 +54,10 @@ uint16_t System_GetSysMode(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_GetUploadSampleRate
- @¹¦ÄÜ£º·µ»ØuploadSampleRate
- @²ÎÊı£ºnone
- @·µ»Ø£ºuploadSampleRate
+ @åç§°ï¼›System_GetUploadSampleRate
+ @åŠŸèƒ½ï¼šè¿”å›uploadSampleRate
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šuploadSampleRate
 *************************************************************************/
 uint16_t System_GetUploadSampleRate(void)
 {
@@ -65,10 +65,10 @@ uint16_t System_GetUploadSampleRate(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_GetDebugMode
- @¹¦ÄÜ£º·µ»ØdebugMode
- @²ÎÊı£ºnone
- @·µ»Ø£ºdebugMode
+ @åç§°ï¼›System_GetDebugMode
+ @åŠŸèƒ½ï¼šè¿”å›debugMode
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šdebugMode
 *************************************************************************/
 uint16_t System_GetDebugMode(void)
 {
@@ -76,10 +76,10 @@ uint16_t System_GetDebugMode(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_GetDataUploadMode
- @¹¦ÄÜ£º·µ»ØdataUploadMode
- @²ÎÊı£ºnone
- @·µ»Ø£ºdataUlloadMode
+ @åç§°ï¼›System_GetDataUploadMode
+ @åŠŸèƒ½ï¼šè¿”å›dataUploadMode
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šdataUlloadMode
 *************************************************************************/
 uint32_t System_GetDataUploadMode(void)
 {
@@ -87,10 +87,10 @@ uint32_t System_GetDataUploadMode(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_UseMcuPackWrapper
- @¹¦ÄÜ£º·µ»ØÊÇ·ñÊ¹ÓÃPackWrapper±êÖ¾Î»
- @²ÎÊı£ºnone
- @·µ»Ø£ºuseMcuPackWrapper
+ @åç§°ï¼›System_UseMcuPackWrapper
+ @åŠŸèƒ½ï¼šè¿”å›æ˜¯å¦ä½¿ç”¨PackWrapperæ ‡å¿—ä½
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šuseMcuPackWrapper
 *************************************************************************/
 uint16_t System_UseMcuPackWrapper(void)
 {
@@ -98,11 +98,11 @@ uint16_t System_UseMcuPackWrapper(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»MCU_FuncParaUpdate
- @¹¦ÄÜ£ºÉèÖÃMCUÌØÊâº¯Êı
- @²ÎÊı£ºtype£¬ÀàĞÍ
-        val£¬Öµ
- @·µ»Ø£ºnone
+ @åç§°ï¼›MCU_FuncParaUpdate
+ @åŠŸèƒ½ï¼šè®¾ç½®MCUç‰¹æ®Šå‡½æ•°
+ @å‚æ•°ï¼štypeï¼Œç±»å‹
+        valï¼Œå€¼
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void MCU_FuncParaUpdate(uint16_t type, uint32_t val)
 {
@@ -140,10 +140,10 @@ void MCU_FuncParaUpdate(uint16_t type, uint32_t val)
 
 
 /************************************************************************
- @Ãû³Æ£»System_ParaInit
- @¹¦ÄÜ£ºsysPara½á¹¹Ìå³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›System_ParaInit
+ @åŠŸèƒ½ï¼šsysParaç»“æ„ä½“åˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void System_ParaInit(void)
 {
@@ -158,11 +158,11 @@ void System_ParaInit(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_ParaUpdate
- @¹¦ÄÜ£ºsysPara¸üĞÂ
- @²ÎÊı£ºtype£¬Êı¾İÀàĞÍ
-        val£¬Öµ
- @·µ»Ø£ºnone
+ @åç§°ï¼›System_ParaUpdate
+ @åŠŸèƒ½ï¼šsysParaæ›´æ–°
+ @å‚æ•°ï¼štypeï¼Œæ•°æ®ç±»å‹
+        valï¼Œå€¼
+ @è¿”å›ï¼šnone
 *************************************************************************/
 int8_t System_ParaUpdate(uint16_t type, int32_t val)
 {
@@ -174,7 +174,7 @@ int8_t System_ParaUpdate(uint16_t type, int32_t val)
             if((sysPara.systemMode == SYS_MODE_ABD) || (sysPara.systemMode == SYS_MODE_MTT))
             {
                 Radar_Write_ABD_MTT_Para(sysPara.systemMode);
-                mcuSpecialFunc.isPowerCheckEnable = 0;      /* µ÷ÓÃÁ½¸ödemoÊ±£¬½ûÖ¹McuSepcialFuncTaskÏß³Ì¶ÁÈ¡ÎÂ¶ÈºÍ¹¦ÂÊ */
+                mcuSpecialFunc.isPowerCheckEnable = 0;      /* è°ƒç”¨ä¸¤ä¸ªdemoæ—¶ï¼Œç¦æ­¢McuSepcialFuncTaskçº¿ç¨‹è¯»å–æ¸©åº¦å’ŒåŠŸç‡ */
                 mcuSpecialFunc.isTempCheckEnable = 0;
 
             }
@@ -196,12 +196,12 @@ int8_t System_ParaUpdate(uint16_t type, int32_t val)
             sysPara.useMcuPackWrapper = (uint16_t)val;
             if(!sysPara.useMcuPackWrapper)
             {
-                mcuSpecialFunc.isPowerCheckEnable = 0;      /* ²»Ê¹ÓÃMCUÊı¾İ·â×°Ê±£¬½ûÖ¹McuSepcialFuncTaskÏß³Ì¶ÁÈ¡ÎÂ¶ÈºÍ¹¦ÂÊ */
+                mcuSpecialFunc.isPowerCheckEnable = 0;      /* ä¸ä½¿ç”¨MCUæ•°æ®å°è£…æ—¶ï¼Œç¦æ­¢McuSepcialFuncTaskçº¿ç¨‹è¯»å–æ¸©åº¦å’ŒåŠŸç‡ */
                 mcuSpecialFunc.isTempCheckEnable = 0;
             }
             else
             {
-                mcuSpecialFunc.isPowerCheckEnable = 1;      /* ²»Ê¹ÓÃMCUÊı¾İ·â×°Ê±£¬½ûÖ¹McuSepcialFuncTaskÏß³Ì¶ÁÈ¡ÎÂ¶ÈºÍ¹¦ÂÊ */
+                mcuSpecialFunc.isPowerCheckEnable = 1;      /* ä¸ä½¿ç”¨MCUæ•°æ®å°è£…æ—¶ï¼Œç¦æ­¢McuSepcialFuncTaskçº¿ç¨‹è¯»å–æ¸©åº¦å’ŒåŠŸç‡ */
                 mcuSpecialFunc.isTempCheckEnable = 1;
             }
             break;
@@ -221,10 +221,10 @@ int8_t System_ParaUpdate(uint16_t type, int32_t val)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_ParaRead
- @¹¦ÄÜ£º»Ø¶ÁsysPara
- @²ÎÊı£ºtype£¬Êı¾İÀàĞÍ
- @·µ»Ø£ºsysPara
+ @åç§°ï¼›System_ParaRead
+ @åŠŸèƒ½ï¼šå›è¯»sysPara
+ @å‚æ•°ï¼štypeï¼Œæ•°æ®ç±»å‹
+ @è¿”å›ï¼šsysPara
 *************************************************************************/
 int32_t System_ParaRead(uint16_t type)
 {
@@ -245,10 +245,10 @@ int32_t System_ParaRead(uint16_t type)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_Reset
- @¹¦ÄÜ£ºÏµÍ³¸´Î»
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›System_Reset
+ @åŠŸèƒ½ï¼šç³»ç»Ÿå¤ä½
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void System_Reset(void)
 {
@@ -260,10 +260,10 @@ void System_Reset(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»System_Reconfig
- @¹¦ÄÜ£ºÏµÍ³ÖØÅäÖÃ
- @²ÎÊı£ºdataType£¬Êı¾İÀàĞÍ
- @·µ»Ø£ºnone
+ @åç§°ï¼›System_Reconfig
+ @åŠŸèƒ½ï¼šç³»ç»Ÿé‡é…ç½®
+ @å‚æ•°ï¼šdataTypeï¼Œæ•°æ®ç±»å‹
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void System_Reconfig(uint8_t dataType)
 {

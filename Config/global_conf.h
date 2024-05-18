@@ -30,7 +30,7 @@
 
 
 #define DEBUG_MODE_DEFAULT        DEBUG_MODE_OFF
-#define MCU_PACK_WRAPPER_DEFAULT  (1)                /* 1: 上电默认MCU数据封装  0：不封装*/
+#define MCU_PACK_WRAPPER_DEFAULT  (1)                /* 1: 涓婄數榛樿MCU鏁版嵁灏佽  0锛氫笉灏佽*/
 
 /**********debug**********************/
 //#define CONFIG_DEBUG

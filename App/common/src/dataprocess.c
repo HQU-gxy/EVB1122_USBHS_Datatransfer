@@ -38,11 +38,11 @@ uint8_t g_ChipTempDataPack[MCU_SPECIAL_PACK_SIZE] __ALIGN(4) = {0};
 uint8_t g_ChipPowerDataPack[MCU_SPECIAL_PACK_SIZE] __ALIGN(4) = {0};
 
 /********************************************
- @Ãû³Æ£»CheckChirpIndex
- @¹¦ÄÜ£º¼ì²échirp index
- @²ÎÊı£ºchannel£¬½ÓÊÕÍ¨µÀ
-        chirpIndex£¬chirpË÷Òı
- @·µ»Ø£ºnone
+ @åç§°ï¼›CheckChirpIndex
+ @åŠŸèƒ½ï¼šæ£€æŸ¥chirp index
+ @å‚æ•°ï¼šchannelï¼Œæ¥æ”¶é€šé“
+        chirpIndexï¼Œchirpç´¢å¼•
+ @è¿”å›ï¼šnone
 *********************************************/
 static void CheckChirpIndex(uint8_t channel, uint8_t chirpIndex)
 {
@@ -72,11 +72,11 @@ static void CheckChirpIndex(uint8_t channel, uint8_t chirpIndex)
 }
 
 /********************************************
- @Ãû³Æ£»CheckFrameCnt
- @¹¦ÄÜ£º¼ì²éframeË÷Òı
- @²ÎÊı£ºchannel£¬½ÓÊÕÍ¨µÀ
-        frameCnt£¬frameË÷Òı
- @·µ»Ø£ºnone
+ @åç§°ï¼›CheckFrameCnt
+ @åŠŸèƒ½ï¼šæ£€æŸ¥frameç´¢å¼•
+ @å‚æ•°ï¼šchannelï¼Œæ¥æ”¶é€šé“
+        frameCntï¼Œframeç´¢å¼•
+ @è¿”å›ï¼šnone
 *********************************************/
 static void CheckFrameCnt(uint8_t channel, uint16_t frameCnt)
 {
@@ -101,11 +101,11 @@ static void CheckFrameCnt(uint8_t channel, uint16_t frameCnt)
 }
 
 /********************************************
- @Ãû³Æ£»DataStateIdParse
- @¹¦ÄÜ£º×´Ì¬ID½âÎö
- @²ÎÊı£ºdata£¬Êı¾İ
-        channel£¬½ÓÊÕÍ¨µÀ
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataStateIdParse
+ @åŠŸèƒ½ï¼šçŠ¶æ€IDè§£æ
+ @å‚æ•°ï¼šdataï¼Œæ•°æ®
+        channelï¼Œæ¥æ”¶é€šé“
+ @è¿”å›ï¼šnone
 *********************************************/
 static void DataStateIdParse(uint8_t data, uint8_t channel)
 {
@@ -258,11 +258,11 @@ static void DataStateIndex1Parse(uint8_t data, uint8_t channel)
 }
 
 /********************************************
- @Ãû³Æ£»DataStateIndex2Parse
- @¹¦ÄÜ£ºË÷Òı½âÎö
- @²ÎÊı£ºdata£¬Êı¾İ
-        channel£¬½ÓÊÕÍ¨µÀ
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataStateIndex2Parse
+ @åŠŸèƒ½ï¼šç´¢å¼•è§£æ
+ @å‚æ•°ï¼šdataï¼Œæ•°æ®
+        channelï¼Œæ¥æ”¶é€šé“
+ @è¿”å›ï¼šnone
 *********************************************/
 static void DataStateIndex2Parse(uint8_t data, uint8_t channel)
 {
@@ -290,11 +290,11 @@ static void DataStateIndex2Parse(uint8_t data, uint8_t channel)
 }
 
 /********************************************
- @Ãû³Æ£»DataStateTail2Parse
- @¹¦ÄÜ£ºÖ¡Î²½âÎö
- @²ÎÊı£ºdata£¬Êı¾İ
-        channel£¬½ÓÊÕÍ¨µÀ
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataStateTail2Parse
+ @åŠŸèƒ½ï¼šå¸§å°¾è§£æ
+ @å‚æ•°ï¼šdataï¼Œæ•°æ®
+        channelï¼Œæ¥æ”¶é€šé“
+ @è¿”å›ï¼šnone
 *********************************************/
 static uint8_t DataStateTail2Parse(uint8_t data, uint8_t channel)
 {
@@ -327,11 +327,11 @@ static uint8_t DataStateTail2Parse(uint8_t data, uint8_t channel)
 }
 
 /********************************************
- @Ãû³Æ£»DataStateTail3Parse
- @¹¦ÄÜ£ºÖ¡Î²½âÎö
- @²ÎÊı£ºdata£¬Êı¾İ
-        channel£¬½ÓÊÕÍ¨µÀ
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataStateTail3Parse
+ @åŠŸèƒ½ï¼šå¸§å°¾è§£æ
+ @å‚æ•°ï¼šdataï¼Œæ•°æ®
+        channelï¼Œæ¥æ”¶é€šé“
+ @è¿”å›ï¼šnone
 *********************************************/
 static uint8_t DataStateTail3Parse(uint8_t data, uint8_t channel)
 {
@@ -373,13 +373,13 @@ static uint8_t DataStateTail3Parse(uint8_t data, uint8_t channel)
 }
 
 /********************************************
- @Ãû³Æ£»DataCopy
- @¹¦ÄÜ£º¸´ÖÆÊı¾İÖÁ½âÎöbuffer
- @²ÎÊı£ºbuf£¬Êı¾İÖ¸Õë
-        len£¬Êı¾İ³¤¶È
-        channel£¬½ÓÊÕÍ¨µÀ
-        i£¬µ±Ç°Êı¾İÎ»ÖÃ
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataCopy
+ @åŠŸèƒ½ï¼šå¤åˆ¶æ•°æ®è‡³è§£æbuffer
+ @å‚æ•°ï¼šbufï¼Œæ•°æ®æŒ‡é’ˆ
+        lenï¼Œæ•°æ®é•¿åº¦
+        channelï¼Œæ¥æ”¶é€šé“
+        iï¼Œå½“å‰æ•°æ®ä½ç½®
+ @è¿”å›ï¼šnone
 *********************************************/
 static void DataCopy(uint8_t* buf, uint16_t len, uint8_t channel, uint16_t *i)
 {
@@ -406,13 +406,13 @@ static void DataCopy(uint8_t* buf, uint16_t len, uint8_t channel, uint16_t *i)
 }
 
 /********************************************
- @Ãû³Æ£»DataParse
- @¹¦ÄÜ£º¸´ÖÆÊı¾İÖÁ½âÎöbuffer
- @²ÎÊı£ºbuf£¬Êı¾İÖ¸Õë
-        len£¬Êı¾İ³¤¶È
-        channel£¬½ÓÊÕÍ¨µÀ
-        left£¬Ê£ÓàÊı¾İ
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataParse
+ @åŠŸèƒ½ï¼šå¤åˆ¶æ•°æ®è‡³è§£æbuffer
+ @å‚æ•°ï¼šbufï¼Œæ•°æ®æŒ‡é’ˆ
+        lenï¼Œæ•°æ®é•¿åº¦
+        channelï¼Œæ¥æ”¶é€šé“
+        leftï¼Œå‰©ä½™æ•°æ®
+ @è¿”å›ï¼šnone
 *********************************************/
 static uint8_t DataParse(uint8_t* buf, uint16_t len, uint8_t channel, uint16_t* left)
 {
@@ -488,10 +488,10 @@ static uint8_t DataParse(uint8_t* buf, uint16_t len, uint8_t channel, uint16_t* 
 static int16_t nRecvCnt[CHANNEL_MAX] = {0};
 
 /********************************************
- @Ãû³Æ£»DataProc_ResetRecvCnt
- @¹¦ÄÜ£º¸´Î»½ÓÊÕcnt
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_ResetRecvCnt
+ @åŠŸèƒ½ï¼šå¤ä½æ¥æ”¶cnt
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void DataProc_ResetRecvCnt(void)
 {
@@ -499,11 +499,11 @@ void DataProc_ResetRecvCnt(void)
 }
 
 /************************************************************************
- @Ãû³Æ£ºChirpOrFrameIndexCheck
- @¹¦ÄÜ£ºË÷ÒıÅĞ¶Ï£¬¼ì²éË÷ÒıÊÇ·ñÕıÈ·
- @²ÎÊı£ºchannel£ºÍ¨µÀ
-        index£ºË÷Òı
- @·µ»Ø£ºTRUE£¬Ë÷ÒıÕæÈ·£»FALSE£ºË÷Òı´íÎó
+ @åç§°ï¼šChirpOrFrameIndexCheck
+ @åŠŸèƒ½ï¼šç´¢å¼•åˆ¤æ–­ï¼Œæ£€æŸ¥ç´¢å¼•æ˜¯å¦æ­£ç¡®
+ @å‚æ•°ï¼šchannelï¼šé€šé“
+        indexï¼šç´¢å¼•
+ @è¿”å›ï¼šTRUEï¼Œç´¢å¼•çœŸç¡®ï¼›FALSEï¼šç´¢å¼•é”™è¯¯
 *************************************************************************/
 static uint8_t ChirpOrFrameIndexCheck(uint8_t channel, uint8_t index)
 {
@@ -512,7 +512,7 @@ static uint8_t ChirpOrFrameIndexCheck(uint8_t channel, uint8_t index)
     
     if(RadarPara.dataType == DATA_TYPE_DFFT)
     {
-        cycleNum = 512;    /* 2dfftÊı¾İµÄframe indexË÷Òı×î´óÎª511£¬9bit±£´æ£¬²»¹ıÊµ¼ÊÓÃµ½2dfftÊı¾İÊ±Õâ¸öº¯Êı¿ÉÒÔ×¢ÊÍµô²»½øĞĞĞ£Ñé  */
+        cycleNum = 512;    /* 2dfftæ•°æ®çš„frame indexç´¢å¼•æœ€å¤§ä¸º511ï¼Œ9bitä¿å­˜ï¼Œä¸è¿‡å®é™…ç”¨åˆ°2dfftæ•°æ®æ—¶è¿™ä¸ªå‡½æ•°å¯ä»¥æ³¨é‡Šæ‰ä¸è¿›è¡Œæ ¡éªŒ  */
     }
     else
     {
@@ -556,13 +556,13 @@ static uint8_t IsFrameReady()
 }
 
 /********************************************
- @Ãû³Æ£»StartDataTransfer
- @¹¦ÄÜ£º´«ÊäÊı¾İ
- @²ÎÊı£ºframeBuf£¬Êı¾İbuffer
-        bufLen£¬Êı¾İ³¤¶È
-        channel£¬½ÓÊÕÍ¨µÀ
-        index£¬chirp index
- @·µ»Ø£ºnone
+ @åç§°ï¼›StartDataTransfer
+ @åŠŸèƒ½ï¼šä¼ è¾“æ•°æ®
+ @å‚æ•°ï¼šframeBufï¼Œæ•°æ®buffer
+        bufLenï¼Œæ•°æ®é•¿åº¦
+        channelï¼Œæ¥æ”¶é€šé“
+        indexï¼Œchirp index
+ @è¿”å›ï¼šnone
 *********************************************/
 static void StartDataTransfer(uint8_t* frameBuf, uint16_t bufLen, uint8_t channel, uint16_t index)
 {
@@ -670,13 +670,13 @@ static void StartDataTransfer(uint8_t* frameBuf, uint16_t bufLen, uint8_t channe
 #endif
 
 /********************************************
- @Ãû³Æ£»StartAlgorithm
- @¹¦ÄÜ£ºËã·¨Èë¿Úº¯Êı
- @²ÎÊı£ºdataBuf£¬Êı¾İbuffer
-        bufLen£¬Êı¾İ³¤¶È
-        channel£¬½ÓÊÕÍ¨µÀ
-        index£¬chirp index
- @·µ»Ø£ºnone
+ @åç§°ï¼›StartAlgorithm
+ @åŠŸèƒ½ï¼šç®—æ³•å…¥å£å‡½æ•°
+ @å‚æ•°ï¼šdataBufï¼Œæ•°æ®buffer
+        bufLenï¼Œæ•°æ®é•¿åº¦
+        channelï¼Œæ¥æ”¶é€šé“
+        indexï¼Œchirp index
+ @è¿”å›ï¼šnone
 *********************************************/
 void StartAlgorithm(uint8_t* dataBuf, uint16_t dataLen, uint8_t channel, uint16_t index)
 {
@@ -685,14 +685,14 @@ void StartAlgorithm(uint8_t* dataBuf, uint16_t dataLen, uint8_t channel, uint16_
 }
 
 /************************************************************************
- @Ãû³Æ£»DataDispatch
- @¹¦ÄÜ£ºÊı¾İ½âÎöºóµÄ¹¦ÄÜÑ¡Ôñ£¬Ö»ÄÜÑ¡ÔñÊı¾İÍ¸´«»òÕßËã·¨Ó¦ÓÃ
- @²ÎÊı£ºframeBuf£ºÖ¡Êı¾İ
-        len£ºÊı¾İ³¤¶È
-        channel£ºÍ¨µÀ
-        index£ºË÷Òı
- @·µ»Ø£ºÎŞ
- @×÷Õß£ºRSS SW TEAM
+ @åç§°ï¼›DataDispatch
+ @åŠŸèƒ½ï¼šæ•°æ®è§£æåçš„åŠŸèƒ½é€‰æ‹©ï¼Œåªèƒ½é€‰æ‹©æ•°æ®é€ä¼ æˆ–è€…ç®—æ³•åº”ç”¨
+ @å‚æ•°ï¼šframeBufï¼šå¸§æ•°æ®
+        lenï¼šæ•°æ®é•¿åº¦
+        channelï¼šé€šé“
+        indexï¼šç´¢å¼•
+ @è¿”å›ï¼šæ— 
+ @ä½œè€…ï¼šRSS SW TEAM
 *************************************************************************/
 static void DataDispatch(uint8_t* frameBuf, uint16_t bufLen, uint8_t channel, uint16_t index)
 {
@@ -739,14 +739,14 @@ static void DataDispatch(uint8_t* frameBuf, uint16_t bufLen, uint8_t channel, ui
 }
 
 /************************************************************************
- @Ãû³Æ£»DataProcess
- @¹¦ÄÜ£ºÊı¾İ´¦Àí£¬¶ÔSPI½ÓÊÕµÄÊı¾İ½øĞĞ´¦Àí
- @²ÎÊı£ºchannel£ºSPIÍ¨µÀ
-        dmaFlag£º½ÓÊÕÆ¹ÅÒ»º´æµÄ±êÖ¾£¬ÓÃÓÚ´¦Àí¾ßÌå»º´æÊı¾İ
-        recvBuf£º´¦ÀíÊı¾İ
-        bufLen£ºÊı¾İ³¤¶È
- @·µ»Ø£ºÎŞ
- @×÷Õß£ºRSS SW TEAM
+ @åç§°ï¼›DataProcess
+ @åŠŸèƒ½ï¼šæ•°æ®å¤„ç†ï¼Œå¯¹SPIæ¥æ”¶çš„æ•°æ®è¿›è¡Œå¤„ç†
+ @å‚æ•°ï¼šchannelï¼šSPIé€šé“
+        dmaFlagï¼šæ¥æ”¶ä¹’ä¹“ç¼“å­˜çš„æ ‡å¿—ï¼Œç”¨äºå¤„ç†å…·ä½“ç¼“å­˜æ•°æ®
+        recvBufï¼šå¤„ç†æ•°æ®
+        bufLenï¼šæ•°æ®é•¿åº¦
+ @è¿”å›ï¼šæ— 
+ @ä½œè€…ï¼šRSS SW TEAM
 *************************************************************************/
 static void DataProcess(uint8_t channel, uint8_t dmaFlag, uint8_t *recvBuf, uint16_t bufLen)
 {
@@ -819,10 +819,10 @@ static void DataProcess(uint8_t channel, uint8_t dmaFlag, uint8_t *recvBuf, uint
 }
 
 /********************************************
- @Ãû³Æ£»DataProc_Recv
- @¹¦ÄÜ£ºSPIÊı¾İ½ÓÊÕÂÖÑ¯º¯Êı
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_Recv
+ @åŠŸèƒ½ï¼šSPIæ•°æ®æ¥æ”¶è½®è¯¢å‡½æ•°
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void DataProc_Recv(void)
 {
@@ -854,10 +854,10 @@ void DataProc_Recv(void)
 }
 
 /********************************************
- @Ãû³Æ£»Radar_GetIsDataMerge
- @¹¦ÄÜ£º·µ»ØmergeÄ£Ê½flag
- @²ÎÊı£ºnone
- @·µ»Ø£º0/1
+ @åç§°ï¼›Radar_GetIsDataMerge
+ @åŠŸèƒ½ï¼šè¿”å›mergeæ¨¡å¼flag
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼š0/1
 *********************************************/
 uint8_t Radar_GetIsDataMerge(void)
 {
@@ -910,10 +910,10 @@ uint8_t Radar_GetIsDataMerge(void)
 //}
 
 /********************************************
- @Ãû³Æ£»Radar_GetDataFormat
- @¹¦ÄÜ£º·µ»Ø½ÓÊÕ¸ñÊ½flag
- @²ÎÊı£ºnone
- @·µ»Ø£º0/1
+ @åç§°ï¼›Radar_GetDataFormat
+ @åŠŸèƒ½ï¼šè¿”å›æ¥æ”¶æ ¼å¼flag
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼š0/1
 *********************************************/
 uint8_t Radar_GetDataFormat(void)
 {
@@ -966,11 +966,11 @@ static int calc_lcm(int x, int y)
 }
 
 /********************************************
- @Ãû³Æ£»GetRadarPara
- @¹¦ÄÜ£ºÅäÖÃradarPara½á¹¹Ìå
- @²ÎÊı£ºradarPara£¬À×´ï²ÎÊı½á¹¹Ìå
-        dataType£¬Êı¾İÀàĞÍ
- @·µ»Ø£º0/1
+ @åç§°ï¼›GetRadarPara
+ @åŠŸèƒ½ï¼šé…ç½®radarParaç»“æ„ä½“
+ @å‚æ•°ï¼šradarParaï¼Œé›·è¾¾å‚æ•°ç»“æ„ä½“
+        dataTypeï¼Œæ•°æ®ç±»å‹
+ @è¿”å›ï¼š0/1
 *********************************************/
 static int8_t GetRadarPara(RADAR_PARA_T *radarPara, uint8_t dataType)
 {
@@ -1059,10 +1059,10 @@ static int8_t GetRadarPara(RADAR_PARA_T *radarPara, uint8_t dataType)
 }
 
 /********************************************
- @Ãû³Æ£»DataProc_Init
- @¹¦ÄÜ£ºSPIÊı¾İ½ÓÊÕ³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_Init
+ @åŠŸèƒ½ï¼šSPIæ•°æ®æ¥æ”¶åˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void DataProc_Init(void)
 {
@@ -1101,10 +1101,10 @@ void DataProc_Init(void)
 }
 
 /********************************************
- @Ãû³Æ£»DataProc_NeedReconfig
- @¹¦ÄÜ£ºSPIÊı¾İ½ÓÊÕÖØĞÂ³õÊ¼»¯
- @²ÎÊı£ºdataType£¬Êı¾İÀàĞÍ
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_NeedReconfig
+ @åŠŸèƒ½ï¼šSPIæ•°æ®æ¥æ”¶é‡æ–°åˆå§‹åŒ–
+ @å‚æ•°ï¼šdataTypeï¼Œæ•°æ®ç±»å‹
+ @è¿”å›ï¼šnone
 *********************************************/
 uint8_t DataProc_NeedReconfig(uint8_t dataType)
 {    
@@ -1151,10 +1151,10 @@ uint8_t DataProc_NeedReconfig(uint8_t dataType)
 }
 
 /********************************************
- @Ãû³Æ£»DataProc_GetRadarDataType
- @¹¦ÄÜ£º·µ»ØÀ×´ïÊı¾İÀàĞÍ
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_GetRadarDataType
+ @åŠŸèƒ½ï¼šè¿”å›é›·è¾¾æ•°æ®ç±»å‹
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 uint8_t DataProc_GetRadarDataType(void)
 {    
@@ -1162,10 +1162,10 @@ uint8_t DataProc_GetRadarDataType(void)
 }
 
 /********************************************
- @Ãû³Æ£»DataProc_GetRadarDataLen
- @¹¦ÄÜ£º·µ»ØÀ×´ïÊı¾İ³¤¶È
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_GetRadarDataLen
+ @åŠŸèƒ½ï¼šè¿”å›é›·è¾¾æ•°æ®é•¿åº¦
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 uint16_t DataProc_GetRadarDataLen(void)
 {    
@@ -1178,11 +1178,11 @@ QueueHandle_t radarDataQueue[CHANNEL_MAX];
 osThreadId mcuSpecialFuncTaskHandle;
 
 /********************************************
- @Ãû³Æ£»DataProc_Send2RadarDataQueue
- @¹¦ÄÜ£º·¢ËÍÊı¾İÖÁ¶ÓÁĞ
- @²ÎÊı£ºchannel£¬½ÓÊÕÍ¨µÀ
-        radarData£¬À×´ïÊı¾İÖ¸Õë
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_Send2RadarDataQueue
+ @åŠŸèƒ½ï¼šå‘é€æ•°æ®è‡³é˜Ÿåˆ—
+ @å‚æ•°ï¼šchannelï¼Œæ¥æ”¶é€šé“
+        radarDataï¼Œé›·è¾¾æ•°æ®æŒ‡é’ˆ
+ @è¿”å›ï¼šnone
 *********************************************/
 void DataProc_Send2RadarDataQueue(uint8_t channel, void *radarData)
 {
@@ -1202,10 +1202,10 @@ void DataProc_Send2RadarDataQueue(uint8_t channel, void *radarData)
 }
 
 /********************************************
- @Ãû³Æ£»DataProcTask
- @¹¦ÄÜ£ºSPIÊı¾İ½ÓÊÕÈÎÎñ³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProcTask
+ @åŠŸèƒ½ï¼šSPIæ•°æ®æ¥æ”¶ä»»åŠ¡åˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void DataProcTask(void const * argument)
 {
@@ -1286,10 +1286,10 @@ void DataProcTask(void const * argument)
 }
 
 /************************************************************************
- @Ãû³Æ£»DataProc_ResetRadarDataQueue
- @¹¦ÄÜ£ºÖØÖÃspiÊı¾İ¶ÓÁĞ
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_ResetRadarDataQueue
+ @åŠŸèƒ½ï¼šé‡ç½®spiæ•°æ®é˜Ÿåˆ—
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void DataProc_ResetRadarDataQueue(void)
 {
@@ -1301,13 +1301,13 @@ void DataProc_ResetRadarDataQueue(void)
 }
 
 /************************************************************************
- @Ãû³Æ£»McuSepcialFuncTask
- @¹¦ÄÜ£º¶ÁÈ¡¹¦ÂÊºÍÎÂ¶È£¬USBÊä³ö¹©ÉÏÎ»»ú½øĞĞÏÔÊ¾
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›McuSepcialFuncTask
+ @åŠŸèƒ½ï¼šè¯»å–åŠŸç‡å’Œæ¸©åº¦ï¼ŒUSBè¾“å‡ºä¾›ä¸Šä½æœºè¿›è¡Œæ˜¾ç¤º
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 /* 
-    ÎÂ¶È¶ÁÈ¡²½Öè£º
+    æ¸©åº¦è¯»å–æ­¥éª¤ï¼š
     radar->readReg(0x71, R71);
     value = R71;
     value = value & 0x07FF;
@@ -1315,7 +1315,7 @@ void DataProc_ResetRadarDataQueue(void)
     radar->writeReg(0x71, value);
     radar->readReg(0x73, temp_code);
     temp_code = temp_code & 0x03FF;
-    temp_value = -0.746 * temp_code + 506.716;      //temp_value  unit:¶È
+    temp_value = -0.746 * temp_code + 506.716;      //temp_value  unit:åº¦
     radar->writeReg(0x71, R71);
 */
 void McuSepcialFuncTask(void const * argument)
@@ -1445,10 +1445,10 @@ void McuSepcialFuncTask(void const * argument)
 }
 
 /************************************************************************
- @Ãû³Æ£»DataProc_TaskInit
- @¹¦ÄÜ£ºspiÊı¾İ½ÓÊÕÈÎÎñ³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›DataProc_TaskInit
+ @åŠŸèƒ½ï¼šspiæ•°æ®æ¥æ”¶ä»»åŠ¡åˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void DataProc_TaskInit(void)
 {

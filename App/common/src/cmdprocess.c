@@ -56,8 +56,8 @@ static uint16_t I2CTestDataCurIndex = 0;
 static uint8_t stressTestReady = 1;
 #endif
 
-/* Ä¿±ê×·×Ù²¿·Ö±äÁ¿¶¨Òå */
-uint8_t TrackMode = 2;    //Ä¬ÈÏ¶àÄ¿±êÄ£Ê½
+/* ç›®æ ‡è¿½è¸ªéƒ¨åˆ†å˜é‡å®šä¹‰ */
+uint8_t TrackMode = 2;    //é»˜è®¤å¤šç›®æ ‡æ¨¡å¼
 
 void* System_GetPDCaliParaAddr(void)
 {
@@ -84,10 +84,10 @@ void PD_ParaInit(void)
 }
 
 /********************************************
- @Ãû³Æ£»CmdProc_AdcReset
- @¹¦ÄÜ£ºNopÆÚ¼äÖØÖÃADC
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdProc_AdcReset
+ @åŠŸèƒ½ï¼šNopæœŸé—´é‡ç½®ADC
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void CmdProc_AdcReset(void)
 {
@@ -109,10 +109,10 @@ void CmdProc_AdcReset(void)
 
 
 /********************************************
- @Ãû³Æ£»CmdProc_NopConfig
- @¹¦ÄÜ£ºFrame NopÆÚ¼äÏà¹ØÅäÖÃ
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdProc_NopConfig
+ @åŠŸèƒ½ï¼šFrame NopæœŸé—´ç›¸å…³é…ç½®
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void CmdProc_NopConfig(void)
 {
@@ -150,13 +150,13 @@ void CmdProc_NopConfig(void)
 }
 
 /********************************************
- @Ãû³Æ£»FillCmdAck
- @¹¦ÄÜ£ºÃüÁîĞĞackÌî³ä
- @²ÎÊı£ºdata£¬ackÊı¾İ
-        dataLen£¬Êı¾İ³¤¶È
-        cmdType£¬ÃüÁîÀàĞÍ
-        status£¬cmdÉÏ±¨×´Ì¬
-@·µ»Ø£ºindex£¬´ı·¢ËÍÊı¾İ³¤¶È
+ @åç§°ï¼›FillCmdAck
+ @åŠŸèƒ½ï¼šå‘½ä»¤è¡Œackå¡«å……
+ @å‚æ•°ï¼šdataï¼Œackæ•°æ®
+        dataLenï¼Œæ•°æ®é•¿åº¦
+        cmdTypeï¼Œå‘½ä»¤ç±»å‹
+        statusï¼Œcmdä¸ŠæŠ¥çŠ¶æ€
+@è¿”å›ï¼šindexï¼Œå¾…å‘é€æ•°æ®é•¿åº¦
 *********************************************/
 uint16_t FillCmdAck(uint16_t *data, uint16_t dataLen, uint16_t cmdType, uint16_t status)
 {
@@ -210,13 +210,13 @@ uint16_t FillCmdAck(uint16_t *data, uint16_t dataLen, uint16_t cmdType, uint16_t
 }
 
 /********************************************
- @Ãû³Æ£»IAP_FillCmdACK
- @¹¦ÄÜ£ºIAP ÃüÁîACK
- @²ÎÊı£ºCmdType£¬ÃüÁîÀàĞÍ
-        pData£¬Êı¾İ
-        dataLen£¬Êı¾İ³¤¶È
-        ACK_Status£¬ACK×´Ì¬
-@·µ»Ø£ºpos£¬´ı·¢ËÍÊı¾İ³¤¶È
+ @åç§°ï¼›IAP_FillCmdACK
+ @åŠŸèƒ½ï¼šIAP å‘½ä»¤ACK
+ @å‚æ•°ï¼šCmdTypeï¼Œå‘½ä»¤ç±»å‹
+        pDataï¼Œæ•°æ®
+        dataLenï¼Œæ•°æ®é•¿åº¦
+        ACK_Statusï¼ŒACKçŠ¶æ€
+@è¿”å›ï¼šposï¼Œå¾…å‘é€æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t IAP_FillCmdACK(uint16_t CmdType, uint8_t* pData, uint16_t dataLen, uint16_t ACK_Status)
 {
@@ -224,7 +224,7 @@ static uint16_t IAP_FillCmdACK(uint16_t CmdType, uint8_t* pData, uint16_t dataLe
     uint16_t len = 4;
     uint32_t i= 0;
 
-    /* Ìî³äÍ·²¿ */
+    /* å¡«å……å¤´éƒ¨ */
     CmdAck[pos++] = 0xFD;
     CmdAck[pos++] = 0xFC;
     CmdAck[pos++] = 0xFB;
@@ -262,11 +262,11 @@ static uint16_t IAP_FillCmdACK(uint16_t CmdType, uint8_t* pData, uint16_t dataLe
 }
 
 /********************************************
- @Ãû³Æ£»DoAdcReset
- @¹¦ÄÜ£ºÖØÖÃADC
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬´ı·¢ËÍÊı¾İ³¤¶È
+ @åç§°ï¼›DoAdcReset
+ @åŠŸèƒ½ï¼šé‡ç½®ADC
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œå¾…å‘é€æ•°æ®é•¿åº¦
 *********************************************/
 //static uint16_t DoAdcReset(CMD_T *cmd, uint32_t cmdLen)
 //{
@@ -297,13 +297,13 @@ static uint16_t IAP_FillCmdACK(uint16_t CmdType, uint8_t* pData, uint16_t dataLe
 //}
 
 /********************************************
- @Ãû³Æ£»FillReadSnCmdAck
- @¹¦ÄÜ£º·µ»ØSNÃüÁî
- @²ÎÊı£ºdata£¬ÃüÁîÊı¾İ
-        dataLen£¬ÃüÁîÊı¾İ³¤¶È
-        cmdType£¬ ÃüÁîÀàĞÍ
-        status£¬ »Ø¸´×´Ì¬
- @·µ»Ø£ºackLen£¬´ı·¢ËÍÊı¾İ³¤¶È
+ @åç§°ï¼›FillReadSnCmdAck
+ @åŠŸèƒ½ï¼šè¿”å›SNå‘½ä»¤
+ @å‚æ•°ï¼šdataï¼Œå‘½ä»¤æ•°æ®
+        dataLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+        cmdTypeï¼Œ å‘½ä»¤ç±»å‹
+        statusï¼Œ å›å¤çŠ¶æ€
+ @è¿”å›ï¼šackLenï¼Œå¾…å‘é€æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t FillReadSnCmdAck(uint16_t *data, uint16_t dataLen, uint16_t cmdType, uint16_t status)
 {
@@ -347,11 +347,11 @@ static uint16_t FillReadSnCmdAck(uint16_t *data, uint16_t dataLen, uint16_t cmdT
 }
 
 /********************************************
- @Ãû³Æ£»DoWriteReg
- @¹¦ÄÜ£ºÏòSoCĞ´Èë¼Ä´æÆ÷
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬´ı·¢ËÍÊı¾İ³¤¶È
+ @åç§°ï¼›DoWriteReg
+ @åŠŸèƒ½ï¼šå‘SoCå†™å…¥å¯„å­˜å™¨
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œå¾…å‘é€æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoWriteReg(CMD_T *cmd, uint32_t cmdLen)
 {
@@ -402,11 +402,11 @@ static uint16_t DoWriteReg(CMD_T *cmd, uint32_t cmdLen)
 }
 
 /********************************************
- @Ãû³Æ£»DoReadReg
- @¹¦ÄÜ£º»Ø¶ÁSoC¼Ä´æÆ÷
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬´ı·¢ËÍÊı¾İ³¤¶È
+ @åç§°ï¼›DoReadReg
+ @åŠŸèƒ½ï¼šå›è¯»SoCå¯„å­˜å™¨
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œå¾…å‘é€æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoReadReg(CMD_T *cmd, uint32_t cmdLen)
 {
@@ -465,11 +465,11 @@ __weak int8_t fftzerofill_ParaUpdate(uint16_t type, int32_t val)
 }
 
 /********************************************
- @Ãû³Æ£»NopCofig_ParaUpdate
- @¹¦ÄÜ£ºNopÆÚ¼äÅäÖÃÏà¹Ø²ÎÊı
- @²ÎÊı£ºtype£¬ÀàĞÍ
-        val£¬ÊıÖµ
- @·µ»Ø£º0/-1£¬Ö¸Ê¾ÅäÖÃ×´Ì¬
+ @åç§°ï¼›NopCofig_ParaUpdate
+ @åŠŸèƒ½ï¼šNopæœŸé—´é…ç½®ç›¸å…³å‚æ•°
+ @å‚æ•°ï¼štypeï¼Œç±»å‹
+        valï¼Œæ•°å€¼
+ @è¿”å›ï¼š0/-1ï¼ŒæŒ‡ç¤ºé…ç½®çŠ¶æ€
 *********************************************/
 int8_t NopCofig_ParaUpdate(uint16_t type, int32_t val)
 {
@@ -502,11 +502,11 @@ int8_t NopCofig_ParaUpdate(uint16_t type, int32_t val)
 }
 
 /********************************************
- @Ãû³Æ£»DoTrackOneMod
- @¹¦ÄÜ£ºÇĞ»»¶àÄ¿±ê×·×ÙdemoÄ¿±ê¸öÊı
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›DoTrackOneMod
+ @åŠŸèƒ½ï¼šåˆ‡æ¢å¤šç›®æ ‡è¿½è¸ªdemoç›®æ ‡ä¸ªæ•°
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoTrackOneMod(CMD_T* cmd, uint32_t cmdLen)
 {
@@ -525,11 +525,11 @@ static uint16_t DoTrackOneMod(CMD_T* cmd, uint32_t cmdLen)
 }
 
 /********************************************
- @Ãû³Æ£»DoTrackTwoMod
- @¹¦ÄÜ£ºÇĞ»»¶àÄ¿±ê×·×ÙdemoÄ¿±ê¸öÊı
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›DoTrackTwoMod
+ @åŠŸèƒ½ï¼šåˆ‡æ¢å¤šç›®æ ‡è¿½è¸ªdemoç›®æ ‡ä¸ªæ•°
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoTrackTwoMod(CMD_T* cmd, uint32_t cmdLen)
 {
@@ -548,11 +548,11 @@ static uint16_t DoTrackTwoMod(CMD_T* cmd, uint32_t cmdLen)
 }
 
 /********************************************
- @Ãû³Æ£»DoWritePara
- @¹¦ÄÜ£º¸üĞÂSysPara
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›DoWritePara
+ @åŠŸèƒ½ï¼šæ›´æ–°SysPara
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoWritePara(CMD_T *cmd, uint32_t cmdLen)
 {
@@ -621,7 +621,7 @@ static uint16_t DoWritePara(CMD_T *cmd, uint32_t cmdLen)
             }
             else
             {
-                Config_NeedFlashWrite();     /* ×¢ÊÍµôÕâĞĞ£¬ÒòÎªÎÒ²»ĞèÒªÔÚĞŞ¸ÄÍêsysParaºó¼ÌĞø½«ĞŞ¸ÄºóµÄÅäÖÃĞ´Èëflash */  
+                Config_NeedFlashWrite();     /* æ³¨é‡Šæ‰è¿™è¡Œï¼Œå› ä¸ºæˆ‘ä¸éœ€è¦åœ¨ä¿®æ”¹å®ŒsysParaåç»§ç»­å°†ä¿®æ”¹åçš„é…ç½®å†™å…¥flash */  
             }
         }
     } 
@@ -660,11 +660,11 @@ __weak int32_t MTT_ParaRead(uint16_t type)
 }
 
 /********************************************
- @Ãû³Æ£»DoReadPara
- @¹¦ÄÜ£º»Ø¶ÁSysPara
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›DoReadPara
+ @åŠŸèƒ½ï¼šå›è¯»SysPara
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoReadPara(CMD_T *cmd, uint32_t cmdLen)
 {
@@ -721,10 +721,10 @@ static uint16_t DoReadPara(CMD_T *cmd, uint32_t cmdLen)
 }
 
 /********************************************
- @Ãû³Æ£»DoWriteSn
- @¹¦ÄÜ£ºĞ´ÈëSNºÅ
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›DoWriteSn
+ @åŠŸèƒ½ï¼šå†™å…¥SNå·
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoWriteSn(CMD_T *cmd)
 {
@@ -759,10 +759,10 @@ static uint16_t DoWriteSn(CMD_T *cmd)
 }
 
 /********************************************
- @Ãû³Æ£»DoReadSN
- @¹¦ÄÜ£º»Ø¶ÁSNºÅ
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›DoReadSN
+ @åŠŸèƒ½ï¼šå›è¯»SNå·
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoReadSn(CMD_T *cmd)
 {
@@ -790,11 +790,11 @@ static uint16_t DoReadSn(CMD_T *cmd)
 }
 
 /********************************************
- @Ãû³Æ£»DoCascadingMode
- @¹¦ÄÜ£º¼¶ÁªÄ£Ê½ÉèÖÃ
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›DoCascadingMode
+ @åŠŸèƒ½ï¼šçº§è”æ¨¡å¼è®¾ç½®
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 static uint16_t DoCascadingMode(CMD_T *cmd, uint32_t cmdLen)
 {
@@ -830,10 +830,10 @@ static uint16_t DoCascadingMode(CMD_T *cmd, uint32_t cmdLen)
 
 #ifdef STM32_PLATFORM 
 /********************************************
- @Ãû³Æ£»ResetI2CTestDataBuf
- @¹¦ÄÜ£ºÖØÖÃI2CÑ¹²âÊı¾İbuffer
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›ResetI2CTestDataBuf
+ @åŠŸèƒ½ï¼šé‡ç½®I2Cå‹æµ‹æ•°æ®buffer
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void ResetI2CTestDataBuf()
 {
@@ -846,11 +846,11 @@ void ResetI2CTestDataBuf()
 #endif 
 
 /********************************************
- @Ãû³Æ£»StartI2CTest
- @¹¦ÄÜ£º¿ªÊ¼I2CÑ¹²â
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›StartI2CTest
+ @åŠŸèƒ½ï¼šå¼€å§‹I2Cå‹æµ‹
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 //static uint16_t StartI2CTest(CMD_T *cmd, uint32_t cmdLen)
 //{
@@ -905,11 +905,11 @@ void ResetI2CTestDataBuf()
 //}
 
 /********************************************
- @Ãû³Æ£»StopI2CTest
- @¹¦ÄÜ£ºÍ£Ö¹I2CÑ¹²â
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›StopI2CTest
+ @åŠŸèƒ½ï¼šåœæ­¢I2Cå‹æµ‹
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 //static uint16_t StopI2CTest(CMD_T *cmd, uint32_t cmdLen)
 //{
@@ -926,11 +926,11 @@ void ResetI2CTestDataBuf()
 //}
 
 /********************************************
- @Ãû³Æ£»GetI2CTestResult
- @¹¦ÄÜ£ºÈ¡µÃI2CÑ¹²â½á¹û
- @²ÎÊı£ºcmd£¬ÃüÁîÊı¾İ
-        cmdLen£¬ÃüÁîÊı¾İ³¤¶È
- @·µ»Ø£ºackLen£¬ÉÏ±¨Êı¾İ³¤¶È
+ @åç§°ï¼›GetI2CTestResult
+ @åŠŸèƒ½ï¼šå–å¾—I2Cå‹æµ‹ç»“æœ
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤æ•°æ®
+        cmdLenï¼Œå‘½ä»¤æ•°æ®é•¿åº¦
+ @è¿”å›ï¼šackLenï¼Œä¸ŠæŠ¥æ•°æ®é•¿åº¦
 *********************************************/
 //static uint16_t GetI2CTestResult(CMD_T *cmd, uint32_t cmdLen)
 //{
@@ -952,11 +952,11 @@ void ResetI2CTestDataBuf()
 //}
 
 /************************************************************************
- @Ãû³Æ£»DoGetAppRun
- @¹¦ÄÜ£º»ñÈ¡µ±Ç°À×´ïÔËĞĞµÄAPP¹Ì¼ş
- @²ÎÊı£ºcmd£ºÃüÁî 
-        cmdLen£ºÃüÁî³¤¶È
- @·µ»Ø£ºÎŞ
+ @åç§°ï¼›DoGetAppRun
+ @åŠŸèƒ½ï¼šè·å–å½“å‰é›·è¾¾è¿è¡Œçš„APPå›ºä»¶
+ @å‚æ•°ï¼šcmdï¼šå‘½ä»¤ 
+        cmdLenï¼šå‘½ä»¤é•¿åº¦
+ @è¿”å›ï¼šæ— 
 *************************************************************************/
 static uint16_t DoGetAppRun(CMD_T* cmd, uint32_t cmdLen)
 {
@@ -987,11 +987,11 @@ static uint16_t DoGetAppRun(CMD_T* cmd, uint32_t cmdLen)
 
 
 /************************************************************************
- @Ãû³Æ£»DoSoftReset
- @¹¦ÄÜ£ºÈí¼ş¸´Î»ÃüÁî
- @²ÎÊı£ºcmd£ºÃüÁî 
-        cmdLen£ºÃüÁî³¤¶È
- @·µ»Ø£ºÎŞ
+ @åç§°ï¼›DoSoftReset
+ @åŠŸèƒ½ï¼šè½¯ä»¶å¤ä½å‘½ä»¤
+ @å‚æ•°ï¼šcmdï¼šå‘½ä»¤ 
+        cmdLenï¼šå‘½ä»¤é•¿åº¦
+ @è¿”å›ï¼šæ— 
 *************************************************************************/
 static uint16_t DoSoftReset(CMD_T* cmd, uint32_t cmdLen)
 {
@@ -1069,11 +1069,11 @@ static uint16_t DoGetWhichDemo(CMD_T* cmd, uint32_t cmdLen)
 
 
 /********************************************
- @Ãû³Æ£»DoGetAppUse
- @¹¦ÄÜ£º»ñÈ¡MCU¿É±à³ÌµÄAPP·ÖÇø
- @²ÎÊı£ºcmd£¬ÃüÁî²ÎÊı
- @·µ»Ø£ºnone
- @×÷Õß£ºHDN
+ @åç§°ï¼›DoGetAppUse
+ @åŠŸèƒ½ï¼šè·å–MCUå¯ç¼–ç¨‹çš„APPåˆ†åŒº
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤å‚æ•°
+ @è¿”å›ï¼šnone
+ @ä½œè€…ï¼šHDN
 *********************************************/
 static uint16_t DoGetAppUse(CMD_T* cmd, uint32_t cmdLen)
 {
@@ -1097,10 +1097,10 @@ static uint16_t DoGetAppUse(CMD_T* cmd, uint32_t cmdLen)
 
 
 /********************************************
- @Ãû³Æ£»CmdGetDeviceID
- @¹¦ÄÜ£º»ñÈ¡´¦ÀíÆ÷96Î»µÄĞòÁĞºÅµÄºó32Î»
- @²ÎÊı£ºcmd£¬ÃüÁî²ÎÊı; cmdLen, ²ÎÊı³¤¶È
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdGetDeviceID
+ @åŠŸèƒ½ï¼šè·å–å¤„ç†å™¨96ä½çš„åºåˆ—å·çš„å32ä½
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤å‚æ•°; cmdLen, å‚æ•°é•¿åº¦
+ @è¿”å›ï¼šnone
 *********************************************/
 static uint16_t DoGetDeviceID(CMD_T* cmd, uint32_t cmdLen)
 {
@@ -1277,10 +1277,10 @@ static uint16_t Read_PDCalibPara(CMD_T *cmd, uint32_t cmdLen)
 
 extern QueueHandle_t usbDataQueue;
 /********************************************
- @Ãû³Æ£»CmdExec
- @¹¦ÄÜ£º»ñÈ¡´¦ÀíÆ÷96Î»µÄĞòÁĞºÅµÄºó32Î»
- @²ÎÊı£ºcmd£¬ÃüÁî²ÎÊı
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdExec
+ @åŠŸèƒ½ï¼šè·å–å¤„ç†å™¨96ä½çš„åºåˆ—å·çš„å32ä½
+ @å‚æ•°ï¼šcmdï¼Œå‘½ä»¤å‚æ•°
+ @è¿”å›ï¼šnone
 *********************************************/
 static void CmdExec(CMD_T *cmd, uint32_t cmdLen)
 {
@@ -1469,10 +1469,10 @@ static void CmdExec(CMD_T *cmd, uint32_t cmdLen)
 }
 
 /********************************************
- @Ãû³Æ£»CmdProc_InCmdMode
- @¹¦ÄÜ£º·µ»ØCmdModeFlag
- @²ÎÊı£ºnone
- @·µ»Ø£ºCmdModeFlag£¬cmdÄ£Ê½flag
+ @åç§°ï¼›CmdProc_InCmdMode
+ @åŠŸèƒ½ï¼šè¿”å›CmdModeFlag
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šCmdModeFlagï¼Œcmdæ¨¡å¼flag
 *********************************************/
 uint8_t CmdProc_InCmdMode(void)
 {
@@ -1480,11 +1480,11 @@ uint8_t CmdProc_InCmdMode(void)
 }
 
 /********************************************
- @Ãû³Æ£»CmdProcess
- @¹¦ÄÜ£ºÃüÁîĞĞÄ£Ê½Èë¿Úº¯Êı
- @²ÎÊı£ºbuf£¬´®¿ÚÊı¾İbuf
-        len£¬Êı¾İ³¤¶È
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdProcess
+ @åŠŸèƒ½ï¼šå‘½ä»¤è¡Œæ¨¡å¼å…¥å£å‡½æ•°
+ @å‚æ•°ï¼šbufï¼Œä¸²å£æ•°æ®buf
+        lenï¼Œæ•°æ®é•¿åº¦
+ @è¿”å›ï¼šnone
 *********************************************/
 static void CmdProcess(uint8_t* buf, uint16_t len)
 {
@@ -1625,10 +1625,10 @@ static void CmdProcess(uint8_t* buf, uint16_t len)
 }
 
 /********************************************
- @Ãû³Æ£»CmdProc_Init
- @¹¦ÄÜ£ºÃüÁîĞĞ³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdProc_Init
+ @åŠŸèƒ½ï¼šå‘½ä»¤è¡Œåˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void CmdProc_Init(void)
 {
@@ -1637,10 +1637,10 @@ void CmdProc_Init(void)
 }
 
 /********************************************
- @Ãû³Æ£»CmdProc_IsInDebugMode
- @¹¦ÄÜ£º·µ»Øµ÷ÊÔÄ£Ê½flag
- @²ÎÊı£ºnone
- @·µ»Ø£ºDebugModeFlag£¬µ÷ÊÔÄ£Ê½flag
+ @åç§°ï¼›CmdProc_IsInDebugMode
+ @åŠŸèƒ½ï¼šè¿”å›è°ƒè¯•æ¨¡å¼flag
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šDebugModeFlagï¼Œè°ƒè¯•æ¨¡å¼flag
 *********************************************/
 uint8_t CmdProc_IsInDebugMode(void)
 {
@@ -1653,10 +1653,10 @@ osThreadId cmdProcTaskHandle;
 QueueHandle_t cmdDataQueue;
 
 /********************************************
- @Ãû³Æ£»CmdProc_Send2CmdDataQueue
- @¹¦ÄÜ£º½«ÃüÁîĞĞÊı¾İ´«ÊäÖÁ¶ÓÁĞ
- @²ÎÊı£ºcmdData£¬ÃüÁîĞĞÊı¾İÖ¸Õë
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdProc_Send2CmdDataQueue
+ @åŠŸèƒ½ï¼šå°†å‘½ä»¤è¡Œæ•°æ®ä¼ è¾“è‡³é˜Ÿåˆ—
+ @å‚æ•°ï¼šcmdDataï¼Œå‘½ä»¤è¡Œæ•°æ®æŒ‡é’ˆ
+ @è¿”å›ï¼šnone
 *********************************************/
 void CmdProc_Send2CmdDataQueue(void *cmdData)
 {
@@ -1676,10 +1676,10 @@ void CmdProc_Send2CmdDataQueue(void *cmdData)
 }
 
 /********************************************
- @Ãû³Æ£»CmdProcTask
- @¹¦ÄÜ£ºÃüÁîĞĞÈÎÎñº¯Êı
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdProcTask
+ @åŠŸèƒ½ï¼šå‘½ä»¤è¡Œä»»åŠ¡å‡½æ•°
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void CmdProcTask(void const * argument)
 {
@@ -1695,10 +1695,10 @@ void CmdProcTask(void const * argument)
 }
 
 /********************************************
- @Ãû³Æ£»CmdProc_TaskInit
- @¹¦ÄÜ£ºÃüÁîĞĞÈÎÎñ³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›CmdProc_TaskInit
+ @åŠŸèƒ½ï¼šå‘½ä»¤è¡Œä»»åŠ¡åˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *********************************************/
 void CmdProc_TaskInit(void)
 {

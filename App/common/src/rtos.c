@@ -27,10 +27,10 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
 }                   
 
 /************************************************************************
- @Ãû³Æ£»RTOS_Init
- @¹¦ÄÜ£ºrtos³õÊ¼»¯
- @²ÎÊı£ºnone
- @·µ»Ø£ºnone
+ @åç§°ï¼›RTOS_Init
+ @åŠŸèƒ½ï¼šrtosåˆå§‹åŒ–
+ @å‚æ•°ï¼šnone
+ @è¿”å›ï¼šnone
 *************************************************************************/
 void RTOS_Init(void) 
 {

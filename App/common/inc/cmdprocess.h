@@ -136,10 +136,10 @@ typedef enum
 #define DEFAULT_PDPARA2_REFVAL          (0)
 #define DEFAULT_PDPARA2_SLOPE           (0)
 
-//跟踪模式：单目标模式，多目标模式
+//璺熻釜妯″紡锛氬崟鐩爣妯″紡锛屽鐩爣妯″紡
 /*
-FD FC FB FA, 02 00, 80 00, 04 03 02 01 (单人) 返回：FD FC FB FA 04 00 80 01 00 00 04 03 02 01
-FD FC FB FA, 02 00, 90 00, 04 03 02 01 (多人) 返回：FD FC FB FA 04 00 90 01 00 00 04 03 02 01 
+FD FC FB FA, 02 00, 80 00, 04 03 02 01 (鍗曚汉) 杩斿洖锛欶D FC FB FA 04 00 80 01 00 00 04 03 02 01
+FD FC FB FA, 02 00, 90 00, 04 03 02 01 (澶氫汉) 杩斿洖锛欶D FC FB FA 04 00 90 01 00 00 04 03 02 01 
 */
 #define TRACK_ONE_CMD     (0x0080)
 #define TRACK_TWO_CMD     (0x0090)
@@ -156,7 +156,7 @@ FD FC FB FA, 02 00, 90 00, 04 03 02 01 (多人) 返回：FD FC FB FA 04 00 90 01 00 0
 
 #define CMD_PROC_STACK_SIZE      (512)
 
-/* IAP 相关命令 */
+/* IAP 鐩稿叧鍛戒护 */
 //#define GET_MCU_ID_CMD          (0x0075)
 //#define SOFT_GET_APP_USE_CMD    (0x0071)
 //#define GET_APP_RUN_CMD         (0x0070)
