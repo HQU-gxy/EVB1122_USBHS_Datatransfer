@@ -54,7 +54,8 @@ static void SPI3_Init(void)
 {
     hspi3.Instance = SPI3;
     hspi3.Init.Mode = SPI_MODE_SLAVE;
-    hspi3.Init.Direction = SPI_DIRECTION_2LINES;
+    // hspi3.Init.Direction = SPI_DIRECTION_2LINES;
+    hspi3.Init.Direction = SPI_DIRECTION_2LINES_RXONLY;
     hspi3.Init.DataSize = SPI_DATASIZE_8BIT;
     hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
     hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
