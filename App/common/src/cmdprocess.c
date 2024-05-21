@@ -1147,24 +1147,18 @@ static void CmdExec(CMD_T *cmd, uint32_t cmdLen) {
 			ackLen            = FillCmdAck(NULL, 0, cmd->cmdType, ACK_OK);
 		}
 		break;
-
 	case FINISH_CFG_CMD:
-		//            Config_SavePara2Flash();
-		//            System_Reconfig();
 		ackLen         = FillCmdAck(NULL, 0, cmd->cmdType, ACK_OK);
 		PreSystemCofig = 1;
 		isSingleSPI    = IsSingleSpiInit();
-		System_Reconfig(0xFF);
+		System_Reconfig(DATA_TYPE_MAX);
 		break;
-
 	case WRITE_REG_CMD:
 		ackLen = DoWriteReg(cmd, cmdLen);
 		break;
-
 	case READ_REG_CMD:
 		ackLen = DoReadReg(cmd, cmdLen);
 		break;
-
 	case READ_VER_CMD:
 		if (masterProtocolVer != 0) {
 			ackLen =
@@ -1173,97 +1167,58 @@ static void CmdExec(CMD_T *cmd, uint32_t cmdLen) {
 			ackLen = FillCmdAck(&devVersion[2], ARRAY_SIZE(devVersion) - 2,
 								cmd->cmdType, ACK_OK);
 		}
-
 		break;
-
 	case WRITE_MTT_CMD:
 	case WRITE_SYS_CMD:
 	case FFT_ZEROFILL_CMD:
-	//        case NOP_CONFIG_CMD:
 	case MCU_SPECIAL_FUNC_CMD:
 		ackLen = DoWritePara(cmd, cmdLen);
 		break;
-
 	case READ_MTT_CMD:
 	case READ_SYS_CMD:
 		ackLen = DoReadPara(cmd, cmdLen);
 		break;
-
-		/* config para, specially for ABD */
-		//        case PARAM_CFG_CMD:
-		//        case THRESHOLD_SET_CMD:
-		//            ackLen = BodySensing_ParaUpdate(cmd, cmdLen, CmdModeFlag);
-		//            break;
-		//        case PARAM_READ_CMD:
-		//            ackLen = DoReadBodySensingPara(cmd, cmdLen, CmdModeFlag);
-		//            break;
-
 	case WRITE_PD_CALIBRATION_CMD:
 		ackLen = Set_PDCalibrationPara(cmd, cmdLen);
 		break;
-
 	case READ_PD_CALIBRATION_CMD:
 		ackLen = Read_PDCalibPara(cmd, cmdLen);
 		break;
-
 	case TRACK_ONE_CMD:
 		ackLen = DoTrackOneMod(cmd, cmdLen);
 		break;
-
 	case TRACK_TWO_CMD:
 		ackLen = DoTrackTwoMod(cmd, cmdLen);
 		break;
-
 	case WRITE_SN_CMD:
 		ackLen = DoWriteSn(cmd);
 		break;
-
 	case READ_SN_CMD:
 		ackLen = DoReadSn(cmd);
 		break;
-
 	case CASCADING_MODE_CMD:
 		ackLen = DoCascadingMode(cmd, cmdLen);
 		break;
-
-		//        case START_I2C_TEST_CMD:
-		//            ackLen = StartI2CTest(cmd, cmdLen);
-		//            break;
-
-		//        case STOP_I2C_TEST_CMD:
-		//            ackLen = StopI2CTest(cmd, cmdLen);
-		//            break;
-
-		//        case GET_I2C_TEST_RESULT_CMD:
-		//            ackLen = GetI2CTestResult(cmd, cmdLen);
-		//            break;
-
 	case GET_APP_RUN_CMD:
 		ackLen = DoGetAppRun(cmd, cmdLen);
 		break;
-
 	case GET_MCU_ID_CMD:
 		ackLen = DoGetDeviceID(cmd, cmdLen);
 		break;
-
 	case SOFT_GET_APP_USE_CMD:
 		ackLen = DoGetAppUse(cmd, cmdLen);
 		break;
-
 	case SOFT_RESET_CMD:
 		ackLen = DoSoftReset(cmd, cmdLen);
 		break;
-
 	case GET_WHICH_DEMO:
 		ackLen = DoGetWhichDemo(cmd, cmdLen);
 		break;
-
 	default:
 		break;
 	}
 
 	if (ackLen > 0) {
-
 #ifdef STM32_PLATFORM
 		usbDataQ.buf = CmdAck;
 		usbDataQ.len = ackLen;

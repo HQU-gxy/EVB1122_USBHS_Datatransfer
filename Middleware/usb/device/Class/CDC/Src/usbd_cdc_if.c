@@ -273,7 +273,6 @@ static int8_t CDC_Receive_HS(uint8_t *Buf, uint32_t *Len) {
 
 	CmdProc_Send2CmdDataQueue(&cmdData);
 
-
 	return (USBD_OK);
 	/* USER CODE END 11 */
 }

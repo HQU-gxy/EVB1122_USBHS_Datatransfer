@@ -29,11 +29,7 @@ target_include_directories(cmsis-core INTERFACE CMSIS-Core/Include)
 add_library(cmsis-f4 STATIC)
 set(CMSIS_F4_DIR CMSIS/Drivers/CMSIS/Device/ST/STM32F4xx)
 set(CMSIS_F4_GCC_DIR ${CMSIS_F4_DIR}/Source/Templates/gcc/)
-# target_include_directories(cmsis-f4 PUBLIC ${CMSIS_F4_DIR}/Include)
-# target_include_directories(cmsis-f4 PUBLIC Driver/stm32f4xx/peripheral/inc)
-target_sources(cmsis-f4 PRIVATE
-        ${CMSIS_F4_GCC_DIR}/startup_stm32f429xx.s
-)
+target_sources(cmsis-f4 PRIVATE ${CMSIS_F4_GCC_DIR}/startup_stm32f429xx.s)
 target_include_directories(cmsis-f4 PUBLIC Driver/stm32f4xx/cmsis/inc)
 target_include_directories(cmsis-f4 PUBLIC Driver/stm32f4xx/peripheral/inc)
 target_sources(cmsis-f4 PRIVATE ${CMSIS_F4_DIR}/Source/Templates/system_stm32f4xx.c)

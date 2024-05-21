@@ -743,44 +743,40 @@ uint8_t Radar_GetIsDataMerge(void) {
 	return 0;
 }
 
-// uint8_t Radar_GetRxGainType(void)
-//{
-// #ifdef GD32_PLATFORM
-//	return 1;
-// #else
-//     uint8_t valRet = 0;
-//     uint16_t valLpf = 0;
-//     uint16_t valLna = 0;
-//     SPI4_Read(I2C_ADDR_BanYan_Chip0, BANYAN_LPF_CHANNEL_ENABLE, &valLpf);
-//     SPI4_Read(I2C_ADDR_BanYan_Chip0, BANYAN_LNA_CHANNEL_ENABLE, &valLna);
-//
-//     if((((valLpf >> 8) & 0xa) | ((valLna >> 14) & 0x2)) != 0)
-//     {
-//         valRet |= 1;
-//     }
-//
-//     if((((valLpf >> 8) & 0x5) | ((valLna >> 14) & 0x1)) != 0)
-//     {
-//         valRet |= 2;
-//     }
-//
-//     if(SPI4_Read(I2C_ADDR_BanYan_Chip1, BANYAN_LPF_CHANNEL_ENABLE, &valLpf) == HAL_OK)
-//     {
-//         SPI4_Read(I2C_ADDR_BanYan_Chip1, BANYAN_LNA_CHANNEL_ENABLE, &valLna);
-//         if((((valLpf >> 8) & 0xa) | ((valLna >> 14) & 0x2)) != 0)
-//         {
-//             valRet |= 4;
-//         }
-//
-//         if((((valLpf >> 8) & 0x5) | ((valLna >> 14) & 0x1)) != 0)
-//         {
-//             valRet |= 8;
-//         }
-//     }
+#if 0
+uint8_t Radar_GetRxGainType(void) {
+#ifdef GD32_PLATFORM
+	return 1;
+#else
+	uint8_t valRet  = 0;
+	uint16_t valLpf = 0;
+	uint16_t valLna = 0;
+	SPI4_Read(I2C_ADDR_BanYan_Chip0, BANYAN_LPF_CHANNEL_ENABLE, &valLpf);
+	SPI4_Read(I2C_ADDR_BanYan_Chip0, BANYAN_LNA_CHANNEL_ENABLE, &valLna);
 
-//	return valRet;
-// #endif
-//}
+	if ((((valLpf >> 8) & 0xa) | ((valLna >> 14) & 0x2)) != 0) {
+		valRet |= 1;
+	}
+
+	if ((((valLpf >> 8) & 0x5) | ((valLna >> 14) & 0x1)) != 0) {
+		valRet |= 2;
+	}
+
+	if (SPI4_Read(I2C_ADDR_BanYan_Chip1, BANYAN_LPF_CHANNEL_ENABLE, &valLpf) == HAL_OK) {
+		SPI4_Read(I2C_ADDR_BanYan_Chip1, BANYAN_LNA_CHANNEL_ENABLE, &valLna);
+		if ((((valLpf >> 8) & 0xa) | ((valLna >> 14) & 0x2)) != 0) {
+			valRet |= 4;
+		}
+
+		if ((((valLpf >> 8) & 0x5) | ((valLna >> 14) & 0x1)) != 0) {
+			valRet |= 8;
+		}
+	}
+
+	return valRet;
+#endif
+}
+#endif
 
 /********************************************
  @名称；Radar_GetDataFormat
@@ -847,16 +843,16 @@ static int8_t GetRadarPara(RADAR_PARA_T *radarPara, uint8_t dataType) {
 		radarPara->dataType = Radar_GetDataType();
 	}
 
-	//    radarPara->dataType = Radar_GetDataType();
-	//    radarPara->dataType = DATA_TYPE_DSRAW;
+	// radarPara->dataType = Radar_GetDataType();
+	// radarPara->dataType = DATA_TYPE_DSRAW;
 
 	radarPara->mergeData = Radar_GetIsDataMerge();
-	//    radarPara->mergeData = 0;
+	// radarPara->mergeData = 0;
 
 	radarPara->rxType = Radar_GetRxGainType();
 
 	radarPara->newDataFormat = Radar_GetDataFormat();
-	//    radarPara->newDataFormat = 1;
+	// radarPara->newDataFormat = 1;
 
 #if defined(CONFIG_DEBUG)
 	printf("dataType: %d\r\n", radarPara->dataType);
@@ -865,14 +861,11 @@ static int8_t GetRadarPara(RADAR_PARA_T *radarPara, uint8_t dataType) {
 	switch (radarPara->dataType) {
 	case DATA_TYPE_DSRAW:
 		radarPara->dataLen = Radar_GetRawPoint() * 2 * 2 + SPI_FRAME_HLEN + SPI_FRAME_TLEN; /*16 bit, IQ*/
-																							//            radarPara->dataLen = RAW_POINT_512 * 2 * 2 + SPI_FRAME_HLEN + SPI_FRAME_TLEN;  /*16 bit, IQ*/
-
+		// radarPara->dataLen = RAW_POINT_512 * 2 * 2 + SPI_FRAME_HLEN + SPI_FRAME_TLEN;  /*16 bit, IQ*/
 		break;
-
 	case DATA_TYPE_FFT:
 		radarPara->dataLen = Radar_GetFftPoint() * 2 * 2 + SPI_FRAME_HLEN + SPI_FRAME_TLEN; /*16 bit, IQ*/
 		break;
-
 #if defined(EVBKS5_E)
 	case DATA_TYPE_DFFT:
 		dfftDataNum  = Radar_GetDfftDataNum();
@@ -883,11 +876,9 @@ static int8_t GetRadarPara(RADAR_PARA_T *radarPara, uint8_t dataType) {
 		radarPara->dataLen = dfftDataNum * 2 * 2 * dfftChirpNum + SPI_FRAME_HLEN + SPI_FRAME_TLEN; /*16 bit, IQ*/
 		break;
 #endif
-
 	case DATA_TYPE_DFFT_PEAK:
 		radarPara->dataLen = Radar_GetDfftPeakSize() + SPI_FRAME_HLEN + SPI_FRAME_TLEN;
 		break;
-
 	default:
 		printf("Error: unsupport dataType\r\n");
 		return FAIL;
@@ -923,7 +914,7 @@ void DataProc_Init(void) {
 	memset(&RadarPara, 0, sizeof(RadarPara));
 
 	if (FAIL == GetRadarPara(&RadarPara, Radar_GetDataTypeByRegisterList())) {
-		// RunFailed((uint8_t *)__FILE__, __LINE__);
+		RunFailed((uint8_t *)__FILE__, __LINE__);
 	}
 
 	nRecvCntMax = calc_lcm(RadarPara.chirpNum, System_GetUploadSampleRate()) * g_TxCount;
