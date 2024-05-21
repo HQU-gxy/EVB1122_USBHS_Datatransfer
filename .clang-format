@@ -1,0 +1,23 @@
+# C++ specific configuration (akin to Google's C++ style)
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html#adding-additional-style-options
+---
+Language: Cpp
+BasedOnStyle: LLVM
+UseTab: ForContinuationAndIndentation
+IndentWidth: 4
+TabWidth: 4
+AccessModifierOffset: -4
+ColumnLimit: 0
+NamespaceIndentation: Inner
+FixNamespaceComments: true
+BreakBeforeBraces: Attach
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: true
+AllowShortBlocksOnASingleLine: Empty
+IndentCaseLabels: false
+SortIncludes: Never
+AlignConsecutiveMacros: AcrossEmptyLines
+AlignConsecutiveAssignments: Consecutive
+BreakStringLiterals: true
+LineEnding: LF
+MaxEmptyLinesToKeep: 2

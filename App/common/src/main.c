@@ -24,33 +24,29 @@
 #include "cmsis_os.h"
 #endif
 
-int main(void)
-{   
-//#if defined RUN_APP0
-//    SCB->VTOR = FLASH_BASE | 0x20000;//设置偏移量
-//#elif defined RUN_APP1
-//    SCB->VTOR = FLASH_BASE | 0x40000;//设置偏移量
-//#endif
-    Platform_Init();
-    delay_ms(8);
-    Config_Init();
-//    Radar_Init();
-    Radar_Init_Stop_BanyanE();
-    Radar_Init_Start_BanyanE();
-	
-	
-	
-	
+int main(void) {
+	// #if defined RUN_APP0
+	//     SCB->VTOR = FLASH_BASE | 0x20000;//设置偏移量
+	// #elif defined RUN_APP1
+	//     SCB->VTOR = FLASH_BASE | 0x40000;//设置偏移量
+	// #endif
+	Platform_Init();
+	delay_ms(8);
+	Config_Init();
+	//    Radar_Init();
+	Radar_Init_Stop_BanyanE();
+	Radar_Init_Start_BanyanE();
+
+
 #ifdef STM32_PLATFORM
-    RTOS_Init();
+	RTOS_Init();
 #endif
-    
-    DataProc_Init();
 
-    CmdProc_Init();
+	DataProc_Init();
 
-    osKernelStart();
-    
-    while (1);
+	CmdProc_Init();
+
+	osKernelStart();
+
+	while (1);
 }
-

@@ -1,16 +1,16 @@
 /**
-  ******************************************************************************
-  * @file    stm32_clock.h
-  * @author  iclm team
-  * @brief   clock header file
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    stm32_clock.h
+ * @author  iclm team
+ * @brief   clock header file
+ ******************************************************************************
+ */
 #ifndef __STM32_CLOCK_H__
 #define __STM32_CLOCK_H__
 
 #ifdef __cplusplus
- extern "C" {
-#endif 
+extern "C" {
+#endif
 
 #if defined(STM32F429xx)
 #include "stm32f4xx_hal.h"
@@ -27,5 +27,3 @@ void SystemClock_Config(void);
 #endif
 
 #endif
-
-
