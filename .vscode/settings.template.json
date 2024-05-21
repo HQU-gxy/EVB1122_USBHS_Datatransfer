@@ -1,0 +1,11 @@
+{
+    "cmake.buildDirectory": "${workspaceFolder}/cmake-build-debug",
+    "cmake.configureArgs": [
+        "-DTOOLCHAIN_PREFIX=/opt/arm-gnu-toolchain-13.2"
+    ],
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=/opt/arm-gnu-toolchain-13.2/bin/arm-none-eabi-gcc",
+    "--compile-commands-dir=cmake-build-debug",
+  ]
+}
